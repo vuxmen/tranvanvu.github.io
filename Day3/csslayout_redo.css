@@ -1,0 +1,86 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-size: 1rem;
+}
+.wrap_view {
+	width: 100%;
+}
+.flex_container {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	color: white;
+	font-size: 20px;
+}
+.flex_container.fourth {
+	width: 100%;
+	display: flex;
+	color: white;
+	font-size: 20px;
+	justify-content: center;
+}
+.red_block {
+	height: 400px; 
+	background-color: red;
+	text-align: center;
+	line-height: 400px;
+}
+.flex_container.first .red_block, .flex_container.second .red_block {
+	width: 60%;
+}
+.flex_container.third .red_block {
+	flex: 1 1 auto;
+}
+.flex_container.fourth .red_block {
+	width: 25%;
+}
+.green_block, .blue_block {
+	text-align: center;
+}
+.green_block {
+	background-color: green;
+}
+.blue_block {
+	background-color: blue;
+}
+.flex_container.first .green_block, .flex_container.first .blue_block {
+	width: 40%;
+	height: 200px;
+	line-height: 200px;
+
+}
+.flex_container.second .green_block, .flex_container.second .blue_block {
+	width: 38.8%;
+	height: 200px;
+	line-height: 200px;
+	margin-left: 15px;
+}
+.flex_container.first .blue_block, .flex_container.second .blue_block {
+	position: absolute;
+	left: 60%;
+	top: 200px;
+}
+.flex_container.third .green_block, .flex_container.third .blue_block, .flex_container.fourth .green_block, .flex_container.fourth .blue_block {
+	height: 400px;
+	line-height: 400px;
+}
+.flex_container.third .green_block, .flex_container.third .blue_block {
+	flex: 1 1 auto;
+}
+.flex_container.fourth .green_block, .flex_container.fourth .blue_block {
+	width: 25%;
+	margin-left: 15px;
+}
+p {
+	text-align: center;
+	font-size: 1.1rem;
+	margin: 3vw 0 3vw 0;
+	font-style: italic;
+}
+
+
+
