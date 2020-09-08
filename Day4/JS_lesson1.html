@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Foundation - Lesson1</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Javascript Foundation Lesson 1</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+		console.log('----------------------KHAI BAO BIEN---------------------');
+		console.log("Hello World");
+		var name;
+		var tuoi = 13;
+		console.log(name);
+		console.log(tuoi);
+		console.log(typeof name);
+		console.log(typeof tuoi);
+		//TypeScript de rang buoc kieu du lieu javascript
+		console.log('----------------BIEN TOAN CUC, BIEN CUC BO-------------');
+		var foo = 123;
+		var num1 = 10;
+		var num2 = 5;
+		function test() {
+			var bar = 'abc';
+		}
+		test();
+		console.log(foo);
+		// console.log(bar); //error 
+		console.log('------------------------STRING--------------------------');
+		var name = 'Vu';
+		var address = 'Ha Noi';
+		console.log('Ten bien la: ' + address);
+		console.log('Kieu du lieu cua bien address la: ' + typeof name);
+		var details = name + ' live in ' + address;
+		console.log(details);
+		console.log('-------------------Method of String---------------------');
+		console.log('Do dai chuoi details la: ' + details.length);
+		console.log('Index of live in details string is: ' + details.indexOf('live'));
+		console.log('Last index of n in details string is: ' + details.lastIndexOf('n'));
+		console.log('Ghep chuoi = concat: ' + details.concat(' in Viet Nam'));
+		console.log('Cat chuoi = slice, cat chuoi detail tu 0 den 6 ki tu la: ' + details.slice(0, 6)); 
+		console.log(details.slice(1));
+		console.log(details.slice(-5,-3));
+		console.log('substring tuong tu slice nhung ko truyen tham so am');
+		console.log('substr - cat theo vi tri bat dau, do dai chuoi can cat: ');
+		console.log('UpperCase: ' + details.toUpperCase());
+		console.log('Chuyen tu chuoi sang mang: ' + details.split(' '));
+		console.log('Type of new string is: ' + typeof details.split(' '));
+		console.log('Luy thua: ' + Math.pow(num1, num2));
+		console.log(Math.max(0,2,5,1));
+		console.log('--------------------Array--------------------');
+		var array = [1,2,6, 'Ha Noi', true, [5,8,10]];
+		console.log('Declare an array: ' + array);
+		console.log(array[0]);
+		array[3] = 'Da Nang';
+		console.log(array);
+		console.log('--------------Cong cac array se tu convert tu array sang string --------');
+		var array1 = [1, 2, 3];
+		var array2 = [4, 5, 6];
+		var array3 = array1 + array2;
+		console.log(array3);
+		console.log(typeof array3);
+		console.log('Do dai chuoi array = ' + array.length);
+		console.log('--------------------Them phan tu vao array-------------------------------');
+		array.unshift('vuxmen');
+		console.log('Them phan tu vao dau mang: ' + array);
+		array.shift();
+		console.log('Xoa phan tu dau mang: ' + array);
+		array.pop();
+		console.log('Xoa phan tu cuoi mang: ' + array);
+		array.splice(2, 2);
+		console.log('Xoa, them phan tu o vi tri bat ky: ' + array);
+		var newarray = array.slice(1, 2);
+		console.log('Cat 1 phan tu tu phan tu thu 2: ' + newarray);
+		var array4 = [0, 'abc', [1,2,3], [0,0,0], false];
+		console.log('Reverse array4: ' + array4.reverse());
+		array4.sort();
+		console.log('Sort() sort array4 follow UNICODE sort: ' + array4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
