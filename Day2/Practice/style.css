@@ -1,0 +1,9 @@
+.third {
+	display: inline;
+	background-image: linear-gradient(to right, red, yellow);
+	color: white;
+	font-size: 20px;
+}
+@keyframes rotate {
+	50% {transform: rotate(180deg);};
+}
