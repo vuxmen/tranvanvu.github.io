@@ -145,49 +145,17 @@
 #dropDown_menu #type_product .product_name:hover {
 	background-color: #eff0f5;
 }
-#dropDown_menu #type_product .product_name:hover .symbol .fas.fa-angle-right {
+#dropDown_menu #type_product .product_name:hover .symbol .fas.fa-angle-right,  #dropDown_menu #type_product .product_name .model_product .model_name:hover .symbol_lv2 .fas.fa-angle-right {
 	visibility: visible;
 }
-#dropDown_menu #type_product .product_name:hover .name_type, #dropDown_menu #type_product .product_name:hover .symbol .fas.fa-angle-right {
+#dropDown_menu #type_product .product_name:hover .name_type, #dropDown_menu #type_product .product_name:hover .symbol .fas.fa-angle-right , #dropDown_menu #type_product .product_name .model_product .model_name:hover .model, #dropDown_menu #type_product .product_name .model_product .model_name:hover .symbol_lv2 .fas.fa-angle-right {
 	cursor: pointer;
 	color: #f57022;
 }
-#dropDown_menu #type_product .product_name.devices:hover .model_product {
+#dropDown_menu #type_product .product_name:hover .model_product, #dropDown_menu #type_product .product_name .model_product .model_name:hover .branch_product {
 	visibility: visible;
 }
-#dropDown_menu #type_product .product_name.accessories:hover .model_product {
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.tv:hover .model_product {
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.health:hover .model_product {
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.baby:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.glocery:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.home:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.woman:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.men:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.fashion:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.sport:hover .model_product{
-	visibility: visible;
-}
-#dropDown_menu #type_product .product_name.automotive:hover .model_product{
-	visibility: visible;
-}
+
 #dropDown_menu .product_name .name_type {
 	height: 100%;
 	width: 70%;
@@ -196,17 +164,17 @@
 	color: #757575;
 	font-size: 1.25vw;
 }
-#dropDown_menu .product_name .symbol {
+#dropDown_menu .product_name .symbol, #dropDown_menu .product_name .symbol_lv2 {
 	float: right;
 	height: 100%;
 }
-#dropDown_menu .product_name .symbol .fas.fa-angle-right {
+.symbol .fas.fa-angle-right, .symbol_lv2 .fas.fa-angle-right {
 	-webkit-text-stroke: 0.1vw white;
 	font-size: 1.4vw;
 	color: #757575;
 	visibility: hidden;
 }
-#dropDown_menu .product_name .model_product {
+#dropDown_menu .product_name .model_product,  #dropDown_menu .product_name .model_product .model_name .branch_product {
 	position: absolute;
 	height: 100%;
 	list-style-type: none;
@@ -220,7 +188,7 @@
 	visibility: hidden;
 	box-shadow: -0.05vw 0 3px rgba(0, 0, 0, 0.2);
 }
-#dropDown_menu .product_name .model_product .model_name {
+#dropDown_menu .product_name .model_product .model_name,  #dropDown_menu .product_name .model_product .model_name .branch_product .branch_name {
 	flex: 0 0 8.33%;
 	width: 100%;
 	line-height: 2.5vw;
@@ -240,10 +208,26 @@
 	color: #757575;
 	font-size: 1.25vw;
 }
-
-
-
-
+#dropDown_menu .product_name .model_product .model_name .branch_product .branch_name {
+	flex: 0 0 8.33%;
+	width: 100%;
+	line-height: 2.5vw;
+	padding-left: 2vw;
+	background-clip: border-box;
+}
+#dropDown_menu .product_name .model_product .model_name .branch_product .branch_name:hover {
+	cursor: pointer;
+	background-color: #eff0f5;
+}
+#dropDown_menu .product_name .model_product .model_name .branch_product .branch_name:hover .branch a {
+	color: #f57022;
+} 
+#dropDown_menu .product_name .model_product .model_name .branch_product .branch_name .branch a {
+	text-decoration: none;
+	font-family: Roboto-Regular;
+	color: #757575;
+	font-size: 1.25vw;
+}
 
 
 
