@@ -35,7 +35,7 @@ button {
 	background-color: #4CAF50;
 	color: white;
 }
-.result {
+.result, #result_check {
 	display: inline-block;
 	margin: 0;
 }
