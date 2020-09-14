@@ -68,9 +68,9 @@ function reverseString(a) {
 }
 
 function checkReverse(abc) {
-	var reverse = abc[0].split('').reverse().join('');
+	var reverse = abc[0].toLowerCase().split().reverse().join();
 	console.log(reverse);
-	document.getElementsByClassName('result')[7].innerHTML = (abc[0] === reverse);
+	document.getElementsByClassName('result')[7].innerHTML = (abc[0].toLowerCase() === reverse);
 }
 
 
