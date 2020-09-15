@@ -72,6 +72,70 @@ function checkReverse(abc) {
 	console.log(reverse);
 	document.getElementsByClassName('result')[7].innerHTML = (abc[0].toLowerCase() === reverse);
 }
+ 
+function minNumbers() {
+	var numb1 = document.getElementsByClassName('array')[0].value;
+	var numb2 = document.getElementsByClassName('array')[1].value;
+	var numb3 = document.getElementsByClassName('array')[2].value;
+	var numbArray = [numb1, numb2, numb3];
+	if (isNaN(numb1) === true || isNaN(numb2) === true || isNaN(numb3) === true) {
+		document.getElementsByClassName('result')[8].innerHTML = 'Bạn nhập sai, vui lòng nhập lại';
+		return;
+	} else {
+		document.getElementsByClassName('result')[8].innerHTML = 'Số nhỏ nhất là: ' + Math.min(...numbArray);
+	}
+}
+
+function max2Number() {
+	var numb3 = document.getElementsByClassName('array')[3].value;
+	var numb4 = document.getElementsByClassName('array')[4].value;
+	var numb5 = document.getElementsByClassName('array')[5].value;
+	var numbArray2 = [numb3, numb4, numb5];
+	if (isNaN(numb3) === true || isNaN(numb4) === true || isNaN(numb5) === true) {
+		document.getElementsByClassName('result')[9].innerHTML = 'Bạn nhập sai, vui lòng nhập lại';
+		return;
+	} else {
+		var i = numbArray2.indexOf(Math.max(...numbArray2));
+		numbArray2.splice(i, 1);
+		document.getElementsByClassName('result')[9].innerHTML = 'Số lớn thứ nhì là: ' + Math.max(...numbArray2);
+	}
+}
+
+function sortStudents() {
+	var name1 = document.getElementsByClassName('array')[6].value;
+	var name2 = document.getElementsByClassName('array')[7].value;
+	var name3 = document.getElementsByClassName('array')[8].value;
+	var nameArr = [name1, name2, name3];
+	if (isNaN(name1) === false || isNaN(name2) === false || isNaN(name3) === false) {
+		document.getElementsByClassName('result')[10].innerHTML = 'Bạn nhập sai, vui lòng nhập lại';
+		return;
+	} else {
+		document.getElementsByClassName('result')[10].innerHTML =  nameArr.sort().reverse();
+	}
+}
+
+function sumResult() {
+	var sum = 0;
+	for (var i = 0; i < 101; i ++) {
+		if (i % 5 == 0) {
+			sum = sum + i;
+		}
+	}
+	document.getElementsByClassName('result')[11].innerHTML =  'Tong cac so chia het cho 5 tu 0 den 100 la: ' + sum;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
