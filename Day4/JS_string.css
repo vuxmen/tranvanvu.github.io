@@ -42,9 +42,16 @@ button {
 	display: inline-block;
 	margin: 0;
 }
-.array {
+.array, .number, .string {
 	width: 4vw;
 }
 .name {
 	width: 16vw;
 }
+
+
+
+
+
+
+

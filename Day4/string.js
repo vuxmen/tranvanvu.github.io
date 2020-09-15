@@ -123,11 +123,61 @@ function sumResult() {
 	}
 	document.getElementsByClassName('result')[11].innerHTML =  'Tong cac so chia het cho 5 tu 0 den 100 la: ' + sum;
 }
+var oldArr =[];
+function getArr() {
+	var arrtopush = [];
+	for (var i = 0; i < document.querySelectorAll('.number').length; i ++) {
+		if (isNaN(document.querySelectorAll('.number')[i].value) === false) {
+			arrtopush.push(document.querySelectorAll('.number')[i].value);
+		} else {
+			document.getElementById('checkInput').innerHTML = 'Ban nhap sai, moi nhap lai';
+			return
+		}
+	}
+	oldArr = [...arrtopush];
+}
 
+function newArray(_oldArr) {
+	var newArr =[];
+	
+	for (var i = 0; i < _oldArr.length; i++) {
+		newArr.push(_oldArr[i] % 2);
+	}
+	document.getElementsByClassName('result')[12].innerHTML = 'Mảng mới sau khi lấy mảng cũ chia 2 lấy dư là: ' + newArr;
+}
 
+var originArr = [];
+function getStrings() {
+	var arrtopush = [];
+	for (var i = 0; i < document.querySelectorAll('.string').length; i ++) {
+		if (isNaN(document.querySelectorAll('.string')[i].value) === true) {
+			arrtopush.push(document.querySelectorAll('.string')[i].value);
+		} else {
+			document.getElementById('checkCondition').innerHTML = 'Ban nhap sai, moi nhap lai';
+			return;
+		}
+	}
+	originArr = [...arrtopush];
+}
 
-
-
+function sortArr(_originArr) {
+	console.log(_originArr);
+	var max_char = 0;
+	var arrtopush = [];
+	for (var i = 0; i < _originArr.length; i++) {
+		if (max_char < _originArr[i].length) {
+			max_char = originArr[i].length;
+		}
+	}
+	console.log(max_char);
+	for (var j = 0; j < _originArr.length; j++) {
+		if (_originArr[j].length === max_char) {
+			arrtopush.push(_originArr[j]);
+		}
+	}
+	console.log(arrtopush);
+	document.getElementsByClassName('result')[13].innerHTML = 'Cac phan tu co do dai lon nhat la: ' + arrtopush;
+}
 
 
 
