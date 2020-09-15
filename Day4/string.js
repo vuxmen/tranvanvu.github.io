@@ -61,16 +61,16 @@ function repeatString3(array, num) {
 	document.getElementsByClassName('result')[5].innerHTML = storeArr.join('-');
 }
 
-function reverseString(a) {
-	var afterSplit = a[0].split(' ');
-	afterSplit.reverse();
-	document.getElementsByClassName('result')[6].innerHTML = afterSplit.join(' ');
+function reverseString(array) {
+	var convertStr = array[0].toString();
+	var convertArr = convertStr.split('');
+	document.getElementsByClassName('result')[6].innerHTML = 'Chuỗi đảo ngược là: ' + convertArr.reverse().join('').toString();
 }
 
 function checkReverse(abc) {
-	var reverse = abc[0].toLowerCase().split().reverse().join();
-	console.log(reverse);
-	document.getElementsByClassName('result')[7].innerHTML = (abc[0].toLowerCase() === reverse);
+	var convertStr = abc[0].split(' ').join('').toString().toLowerCase();
+	var reverse = convertStr.split('').reverse().join('').toString();
+	document.getElementsByClassName('result')[7].innerHTML = (convertStr === reverse);
 }
  
 function minNumbers() {
@@ -87,24 +87,35 @@ function minNumbers() {
 }
 
 function max2Number() {
-	var numb3 = document.getElementsByClassName('array')[3].value;
-	var numb4 = document.getElementsByClassName('array')[4].value;
-	var numb5 = document.getElementsByClassName('array')[5].value;
-	var numbArray2 = [numb3, numb4, numb5];
-	if (isNaN(numb3) === true || isNaN(numb4) === true || isNaN(numb5) === true) {
-		document.getElementsByClassName('result')[9].innerHTML = 'Bạn nhập sai, vui lòng nhập lại';
-		return;
-	} else {
-		var i = numbArray2.indexOf(Math.max(...numbArray2));
-		numbArray2.splice(i, 1);
-		document.getElementsByClassName('result')[9].innerHTML = 'Số lớn thứ nhì là: ' + Math.max(...numbArray2);
+	var arr = document.querySelectorAll('.child');
+	var number = [];
+	for (var i = 0; i < arr.length; i ++) {
+		if (isNaN(arr[i]).value === true) {
+			document.getElementsByClassName('result')[9].innerHTML = 'Bạn nhập sai, vui lòng nhập lại';
+			return;
+		} else {
+			for (i = 0; i < arr.length; i++) {
+				number.push(parseInt(arr[i].value));
+			}
+			var max = Math.max(...number);
+			var result = 0;
+			var sub = [];
+			for (i = 0; i < number.length; i ++) {
+				result = max - number[i];
+				if(result !==0) {
+					sub.push(result);
+				}
+			}
+		}
+		console.log(sub);
+		document.getElementsByClassName('result')[9].innerHTML = 'Số lớn thứ nhì là: ' + (max - Math.min(...sub));
 	}
 }
 
 function sortStudents() {
-	var name1 = document.getElementsByClassName('array')[6].value;
-	var name2 = document.getElementsByClassName('array')[7].value;
-	var name3 = document.getElementsByClassName('array')[8].value;
+	var name1 = document.getElementsByClassName('name')[0].value;
+	var name2 = document.getElementsByClassName('name')[1].value;
+	var name3 = document.getElementsByClassName('name')[2].value;
 	var nameArr = [name1, name2, name3];
 	if (isNaN(name1) === false || isNaN(name2) === false || isNaN(name3) === false) {
 		document.getElementsByClassName('result')[10].innerHTML = 'Bạn nhập sai, vui lòng nhập lại';
@@ -161,7 +172,6 @@ function getStrings() {
 }
 
 function sortArr(_originArr) {
-	console.log(_originArr);
 	var max_char = 0;
 	var arrtopush = [];
 	for (var i = 0; i < _originArr.length; i++) {
@@ -175,16 +185,8 @@ function sortArr(_originArr) {
 			arrtopush.push(_originArr[j]);
 		}
 	}
-	console.log(arrtopush);
 	document.getElementsByClassName('result')[13].innerHTML = 'Cac phan tu co do dai lon nhat la: ' + arrtopush;
 }
-
-
-
-
-
-
-
 
 
 

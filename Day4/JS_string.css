@@ -42,7 +42,7 @@ button {
 	display: inline-block;
 	margin: 0;
 }
-.array, .number, .string {
+.array, .number, .string, .child {
 	width: 4vw;
 }
 .name {
