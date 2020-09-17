@@ -1,16 +1,22 @@
+
+h2 {
+	margin: auto;
+	text-align: center;
+}
 #login {
 	width: 150px;
 	height: 50px;
-	background-color: blue;
+	background-color: #2d5986;
 	text-align: center;
 	color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: border-radius 0.5s linear, background-color 4s ease-out;
+	transition: border-radius 0.4s linear, background-color 0.6s ease-out;
+	margin: auto;
 }
 #login:hover {
-	background-color: green;
+	background-color: #26734d;
 	border-radius: 30px;
 }
 #container {
@@ -26,7 +32,7 @@
 img {
 	width: 100%;
 	height: 100%;
-	transition: transform 0.5s ease-out;
+	transition: transform 0.3s ease-out;
 }
 img:hover {
 	transform: scale(1.3);
@@ -45,6 +51,181 @@ img:hover {
 		background-color: red;
 	}
 }
+
+#container_heart {
+	width: 100%;
+	position: relative;
+	margin: auto;
+	display: inline-block;
+	margin-bottom: 5vw;
+}
+#heart {
+	background-color: #ff8080;
+	height: 10vw;
+	width: 10vw;
+	transform: rotate(-45deg);
+	position: relative;
+	display: inline-block;
+	left: 45%;
+	top: 2vw;
+	animation: beat 3s infinite;
+}
+#heart:before, #heart:after {
+	content: '';
+	background-color: #ff8080;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	border-radius: 50%;	
+}
+#heart:before {
+	top: -50%;
+}
+#heart:after {
+	right: -50%;
+}
+
+@keyframes beat {
+  0% {
+    transform: rotate(-45deg) scale(0.8);
+  }
+  10% {
+    transform: rotate(-45deg) scale(0.9);
+  }
+  20% {
+    transform: rotate(-45deg) scale(0.8);
+  }
+  30% {
+    transform: rotate(-45deg) scale(0.9);
+  }
+  50% {
+    transform: rotate(-45deg) scale(0.8);
+  }
+  55% {
+  	transform: rotate(-45deg) scale(0.9);
+  }
+  60% {
+  	transform: rotate(-45deg) scale(0.8);
+  }
+  65% {
+  	transform: rotate(-45deg) scale(0.9);
+  }
+  70% {
+  	transform: rotate(-45deg) scale(0.8);
+  }
+  75% {
+  	transform: rotate(-45deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(-45deg) scale(0.8);
+  }
+}
+#banner_animation {
+	margin: auto;
+	margin-top: 2vw;
+	text-align: center;
+	width: 16%;
+	height: 12vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #c2d6d6;
+	border-radius: 10px;
+	border: 1px solid #527a7a;
+}
+#banner_animation .banner {	
+	flex: 0 0 33.3%;
+	text-align: center;
+	font-size: 2vw;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#banner_animation .baner .first, #banner_animation .baner .second, #banner_animation .baner .third {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#banner_animation .banner.first, #banner_animation .banner.third {
+ 	background-color: white;
+} 
+#banner_animation .banner.second:before {
+	position: absolute;
+	left: 0;
+	top: -60%;
+	width: 100%;
+	height: 100%;
+	content: "CODING";
+	animation: moveDown 0.6s;
+	color: white;
+	visibility: hidden;
+}
+#banner_animation .banner.second {
+	background-color: orange;
+	color: orange;
+	animation: change 0.5s forwards 0.6s;
+}
+#banner_animation .banner.second:after {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	content: "LEARNING";
+	animation: change_again 0.5s forwards 1.1s;
+	color: white;
+	background-color: green;
+	visibility: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@keyframes moveDown {
+	0% {
+		visibility: visible;
+		top: -60%;
+	}
+	50% {
+		visibility: visible;
+		top: 25%;
+	}
+	100% {
+		visibility: visible;
+		top: 25%;
+	}
+}
+@keyframes change {
+	50% {
+		background-color: purple;
+		color: white;
+	}
+	100% {
+		background-color: purple;
+		color: white;
+	}
+}
+@keyframes change_again {
+	50% {
+		visibility: visible;
+	}
+	100% {
+		visibility: visible;
+	}
+}
+
+
+
+
+
+
+
+
 
 
 

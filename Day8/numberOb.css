@@ -1,0 +1,79 @@
+* {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+	box-sizing: border-box;
+}
+body {
+	background-color: #eee;
+	padding-left: 2vw;
+}
+
+h1 {
+	text-align: center;
+	font-size: 20px;
+}
+h2 {
+	margin: auto;
+	text-align: center;
+}
+
+.lesson {
+	width: 48%;
+	display: flex;
+	flex-direction: column;
+	padding: 1.2vw;
+	height: 17vw;
+	background-color: #e6e6e6;
+	border: 0.2vw solid #bfbfbf;
+	border-radius: 1vw;
+	float: left;
+	margin-right: 1.5vw;
+}
+.lesson .thread, .lesson .form, .lesson .apply, .lesson .check, .lesson .result {
+	flex: 0 0 23%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.lesson .form  {
+	display: flex;
+	align-items: center;
+
+}
+.lesson .form form {
+	flex: 0 0 70%;
+}
+.lesson .form form label {
+	width: 50%;
+}
+.lesson .form form input {
+	margin-left: 1vw;
+	width: 45%;
+}
+.lesson .form .apply {
+	flex: 0 0 18%;
+	padding-left: 0.6vw;s
+	margin-left: 3vw;
+	justify-content: center;
+}
+.result_check {
+	width: 20%;
+	border-bottom: 1px solid grey;
+	margin: 1.2vw 0 0 1vw;
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
