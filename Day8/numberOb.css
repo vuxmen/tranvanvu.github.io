@@ -22,7 +22,7 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	padding: 1.2vw;
-	height: 17vw;
+	height: 20vw;
 	background-color: #e6e6e6;
 	border: 0.2vw solid #bfbfbf;
 	border-radius: 1vw;
@@ -30,7 +30,7 @@ h2 {
 	margin-right: 1.5vw;
 }
 .lesson .thread, .lesson .form, .lesson .apply, .lesson .check, .lesson .result {
-	flex: 0 0 23%;
+	flex: 0 0 25%;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -40,22 +40,28 @@ h2 {
 .lesson .form  {
 	display: flex;
 	align-items: center;
+	height: 100%;
 
 }
 .lesson .form form {
 	flex: 0 0 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 .lesson .form form label {
-	width: 50%;
+	flex: 1 1 40%;
+	width: 100%;
 }
-.lesson .form form input {
-	margin-left: 1vw;
-	width: 45%;
-}
+/*.lesson .form form input {
+	display: inline-block;
+	height: ;
+}*/
 .lesson .form .apply {
 	flex: 0 0 18%;
 	padding-left: 0.6vw;s
 	margin-left: 3vw;
+	display: flex;
 	justify-content: center;
 }
 .result_check {
