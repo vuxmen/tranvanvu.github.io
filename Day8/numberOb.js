@@ -1,25 +1,53 @@
 var radius = '';
-$('.apply').eq(0).click(function() {
+var int1 = null;
+var int2 = null;
+$('.btn-check').eq(0).click(function() {
 	radius = $('input').eq(0).val();
 	console.log(typeof radius);
 	if (radius < 0 || radius === undefined || isNaN(radius) === true) {
-		$('.check').eq(0).html(' Nhập sai, mời nhập lại');
+		$('.spn-check').eq(0).html(' Nhập sai dữ liệu');
 	} else if (radius.length === 0) {
-		$('.check').eq(0).html(' Chưa nhập dữ liệu, mời nhập');
+		$('.spn-check').eq(0).html(' Chưa nhập dữ liệu');
 	}
 	else {
-		$('.check').eq(0).html(' Ok');
+		$('.spn-check').eq(0).html(' Ok');
 	}
 });
 
-$('.showResult').eq(0).click(function() {
+$('.btn-result').eq(0).click(function() {
 	if (radius < 0 || radius === undefined || isNaN(radius) === true) {
-		$('.result.ex1').html('Nhập sai mời nhập lại');
+		$('.spn-result').eq(0).html('Nhập sai dữ liệu');
 	} else if (radius.length === 0) {
-		$('.result.ex1').html('Chưa nhập dữ liệu, mời nhập');
+		$('.spn-result').eq(0).html('Chưa nhập dữ liệu');
 	} 
 	else {
-		$('.result.ex1').html('Thể tích hình cầu (làm tròn) là: ' + Math.round((4/3*(Math.PI)*(Math.pow(radius, 3)))));
+		$('.spn-result').eq(0).html('Thể tích hình cầu (làm tròn) là: ' + Math.round((4/3*(Math.PI)*(Math.pow(radius, 3)))));
 	}
 });
 
+$('.btn-check').eq(1).click(function() {
+	var a = $('input').eq(1).val();
+	var b = $('input').eq(2).val();
+	if (a >= 0 || b >= 0 || isNaN(a) === true|| isNaN(b) === true) {
+		$('.spn-check').eq(1).html('Nhập sai dữ liệu');
+	} else {
+		$('.spn-check').eq(1).html('Ok');
+		int1 = parseInt(a);
+		int2 = parseInt(b);
+		console.log(int1, int2);
+	}
+});
+
+$('.btn-result').eq(1).click(function() {
+	var sum = 0;
+	if (int1 >= 0 || int2 >= 0 || isNaN(int1) === true|| isNaN(int2) === true) {
+		$('.spn-result').eq(1).html('Nhập sai dữ liệu');
+	} else {
+		if (int1 <= int2) {
+			sum = (int1 + int2) * (int2 - int1 + 1) / 2 - int1 - int2;
+		} else {
+			sum = (int1 + int2) * (int1 - int2 + 1) / 2 - int1 - int2;
+		}
+		$('.spn-result').eq(1).html('Tổng là: ' + sum);
+	}	
+});
