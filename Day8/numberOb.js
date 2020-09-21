@@ -1,6 +1,7 @@
 var radius = '';
 var int1 = null;
 var int2 = null;
+var number = null;
 $('.btn-check').eq(0).click(function() {
 	radius = $('input').eq(0).val();
 	console.log(typeof radius);
@@ -51,3 +52,26 @@ $('.btn-result').eq(1).click(function() {
 		$('.spn-result').eq(1).html('Tổng là: ' + sum);
 	}	
 });
+
+$('.btn-check').eq(2).click(function() {
+	var c = $('input').eq(3).val();
+	console.log(isNaN(number));
+	if (isNaN(number) === true) {
+		console.log(number);
+		$('.spn-check').eq(2).html('Nhập sai dữ liệu');
+	} else {
+		$('.spn-check').eq(2).html('Ok');
+		var number = parseInt(c);
+	}
+});
+$('.btn-result').eq(2).click(function() {
+	
+});
+
+
+
+
+
+
+
+
