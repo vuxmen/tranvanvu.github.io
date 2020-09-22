@@ -2,6 +2,7 @@ var radius = '';
 var int1 = null;
 var int2 = null;
 var number = null;
+var c = '';
 var d = ''
 var int = null;
 
@@ -56,22 +57,12 @@ $('.btn-result').eq(1).click(function() {
 	}	
 });
 
-$('.btn-check').eq(2).click(function() {
-	var c = $('input').eq(3).val();
-	console.log(isNaN(c));
-	if (isNaN(c) === true) {
-		console.log(c);
-		$('.spn-check').eq(2).html('Nhập sai');
-	} else {
-		$('.spn-check').eq(2).html('Ok');
-		number = parseInt(c);
-	}
-});
-
 $('.btn-result').eq(2).click(function() {
-	if (number < 2) {
-		$('.spn-result').eq(2).html('Không là số nguyên tố');
+	c = $('input').eq(3).val();
+	if (isNaN(c) === true || c <= 2) {
+		$('.spn-result').eq(2).html('Nhập sai');
 	} else {
+		number = parseInt(c);
 		for (var i = 2; i < number; i ++) {
 			if (number % i === 0) {
 				$('.spn-result').eq(2).html('Không là số nguyên tố');	
@@ -83,32 +74,24 @@ $('.btn-result').eq(2).click(function() {
 	} 
 });
 
-$('.btn-check').eq(3).click(function() {
-	d = $('input').eq(4).val();
-	if (d === '') {
-		$('.spn-check').eq(3).html('Chưa nhập số');
-	}
-	else if (isNaN(d) === true || d <= 2) {
-		$('.spn-check').eq(3).html('Nhập sai, giá trị nhập vào là số nguyên >=3');
-	} else {
-		$('.spn-check').eq(3).html('Ok');
-		int = parseInt(d);
-	}
- });
-
 $('.btn-result').eq(3).click(function() {
+	d = $('input').eq(4).val();
+	int = parseInt(d);
 	var tong = 0;
 	if (d === '') {
 		$('.spn-result').eq(3).html('Chưa nhập số');
 	} else if (isNaN(d) === true || d <= 2) {
 		$('.spn-result').eq(3).html('Nhập sai');
-	} 
-	for (var i = 2; i < int; i ++) {
-		if (int % i !== 0) {
-			tong = tong + i ;
+	} else {
+		console.log(int);
+		for (var i = 2; i < int; i ++) {
+			if (int % i !== 0) {
+				tong = tong + i ;
+			}
 		}
+		$('.spn-result').eq(3).html('Tổng các số nguyên tố <= ' + int + ' là: ' + tong);
 	}
-	$('spn-result').eq(3).html('Tổng các số nguyên tố <= ' + int + ' là: ' + tong);
+	
 });
 
 
