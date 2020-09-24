@@ -1,6 +1,14 @@
 .mid-autumn-card {
-	display: inline-block;
 	position: relative;
+	margin-left: 10%;
+	height: 626px;
+	width: 626px;
+}
+.bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }
 .moon {
 	position: absolute;
@@ -18,10 +26,10 @@
 	left: 33%;
 	z-index: 2;
 }
-.cloud1, .cloud2, .cloud3 {
+.cloud1, .cloud2, .cloud3, .cloud4, .cloud5 {
 	position: absolute;
 	z-index: 3;
-	transform: scale(0.9);
+	transform: scale(0.8);
 }
 .cloud1 {
 	left: 0;
@@ -29,14 +37,48 @@
 	animation: moveLtoR 40s infinite linear;
 }
 .cloud2 {
-	right: 0;
+	right: 6%;
 	top: 28%;
+	animation: moveTtoB 40s infinite ease-out;
 }
 .cloud3 {
 	left: 0;
 	top: 55%;
+	animation: moveBtoT 40s infinite ease-out;
 }
+.cloud4 {
+	left: 0%;
+	top: 75%;
+}
+.cloud5 {
+	right: 4%;
+	top: 80%;
+}
+.rabit1, .rabit2, .rabit3 {
+	position: absolute;
+	z-index: 4;
+}
+.rabit1 {
+	left: 16%;
+	top: 85%;
+}
+.rabit2 {
+	right: 15%;
+	top: 80%;
+}
+.rabit3 {
+	right: 20%;
+	top: 80%;
+}
+@media (min-width: 576px) {
 
+}
+@media (min-width: 768px) {
+
+}
+@media (min-width: 992px) {
+
+}
 
 @keyframes spin {
 	0% {
@@ -75,19 +117,53 @@
 }
 
 @keyframes moveLtoR {
+	25% {
+		top: 30%;
+		left: 35%;
+	}
 	50% {
-		top: 35%;
-		left: 50%;
+		top: 50%;
+		left: 32%;
+	}
+	75% {
+		top: 30%;
+		left: 30%;
 	}
 	100% {
-		top: 45%;
-		right: 0;
+		top: 25%;
+		left: 0;
 	}
 }
 
+@keyframes moveBtoT {
+	50% {
+		top: 25%;
+		left: 10%;
+	}
+	100% {
+		top: 55%;
+		left: 0;
+	}
+}
 
-
-
+@keyframes moveTtoB {
+	25% {
+		top: 30%;
+		right: 0;
+	}
+	50% {
+		top: 70%;
+		right: 10%;
+	}
+	75% {
+		top: 45%;
+		right: 10%;
+	}
+	100% {
+		top: 28%;
+		right: 6%;
+	}
+}
 
 
 
