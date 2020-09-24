@@ -1,0 +1,111 @@
+.mid-autumn-card {
+	display: inline-block;
+	position: relative;
+}
+.moon {
+	position: absolute;
+	left: 11%;
+	top: 18%;
+	z-index: 1;
+    animation: spin 16s infinite linear;
+    -webkit-animation: spin 16s infinite linear;
+    -moz-animation: spin 16s infinite linear;
+    -ms-animation: spin 16s infinite linear;
+}
+.text {
+	position: absolute;
+	top: 48%;
+	left: 33%;
+	z-index: 2;
+}
+.cloud1, .cloud2, .cloud3 {
+	position: absolute;
+	z-index: 3;
+	transform: scale(0.9);
+}
+.cloud1 {
+	left: 0;
+	top: 25%;
+	animation: moveLtoR 40s infinite linear;
+}
+.cloud2 {
+	right: 0;
+	top: 28%;
+}
+.cloud3 {
+	left: 0;
+	top: 55%;
+}
+
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(360deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	50% {
+		-webkit-transform: rotate(360deg);
+	}
+	100% {
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+@-moz-keyframes spin {
+	0% {
+		-moz-transform: rotate(0deg);
+	}
+	50% {
+		-moz-transform: rotate(360deg);
+	}
+	100% {
+		-moz-transform: rotate(0deg);
+	}
+}
+
+@keyframes moveLtoR {
+	50% {
+		top: 35%;
+		left: 50%;
+	}
+	100% {
+		top: 45%;
+		right: 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
