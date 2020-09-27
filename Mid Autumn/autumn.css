@@ -1,139 +1,155 @@
+* {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.view {
+	height: 100vh;
+	padding-top: 10vh;
+}
+
+.f-size {
+	width: 100%;
+	height: 100%;
+}
+
+img {
+	position: absolute;
+}
+
 .mid-autumn-card {
 	position: relative;
-	margin: auto;
-	margin-top: 150px;
-	height: 626px;
-	width: 626px;
+	height: 80vh;
 	overflow: hidden;
 }
-.mid-autumn-card #bottom {
-	position: absolute;
-	top: 75%;
-	right: 5%;
-	width: 30%;
-	height: 18%;
-	z-index: 3;
-	animation: moveBtoTtoB 15s infinite linear;
-	-webkit-animation: moveBtoTtoB 15s infinite linear;
-	-moz-animation: moveBtoTtoB 15s infinite linear;
-	-ms-animation: moveBtoTtoB 15s infinite linear;
+
+.mid-autumn-card .background {
+	z-index: -1;
 }
-.lantern1, .lantern2, .lantern3 {
+
+.mid-autumn-card .lantern1, .mid-autumn-card .lantern2, .mid-autumn-card .lantern3 {
 	position: absolute;
 	z-index: 2;
 }
-.lantern1 {
-	left: 15%;
+
+.mid-autumn-card .lantern1 {
+	width: 10%;
+	height: 20%;
 	top: 14%;
-	animation: moveAround 12s infinite linear;
-	-webkit-animation: moveAround 12s infinite linear;
-	-moz-animation: moveAround 12s infinite linear;
-	-ms-animation: moveAround 12s infinite linear;
+	left: 10%;
+	animation: moveAround 5s infinite linear;
+	-webkit-animation: moveAround 5s infinite linear;
+	-moz-animation: moveAround 5s infinite linear;
+	-ms-animation: moveAround 5s infinite linear;
+} 
+
+.mid-autumn-card .lantern2 {
+	width: 12%;
+	height: 23%;
+	top: 14.5%;
+	left: 60%;
+	animation: moveArounds 4s infinite linear;
+	-webkit-animation: moveArounds 4s infinite linear;
+	-moz-animation: moveArounds 4s infinite linear;
+	-ms-animation: moveArounds 4s infinite linear;
 }
-.lantern2 {
-	left: 70%;
-	top: 15.5%;
+
+.mid-autumn-card .lantern3 {
+	width: 3.5%;
+	height: 12%;
+	top: 16%;
+	left: 85%;
 	animation: moveAround 5s infinite linear;
 	-webkit-animation: moveAround 5s infinite linear;
 	-moz-animation: moveAround 5s infinite linear;
 	-ms-animation: moveAround 5s infinite linear;
 }
-.lantern3 {
-	left: 90%;
-	top: 16.5%;
-	animation: moveAround 12s infinite linear;
-	-webkit-animation: moveAround 12s infinite linear;
-	-moz-animation: moveAround 12s infinite linear;
-	-ms-animation: moveAround 12s infinite linear;
-}
-.bg {
+
+.mid-autumn-card .moon {
+	width: 27vw;
+	height: 27vw;
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-}
-.moon {
-	position: absolute;
+	z-index: 2;
 	left: 11%;
 	top: 18%;
-	z-index: 1;
-    animation: spin 16s infinite linear;
-    -webkit-animation: spin 16s infinite linear;
-    -moz-animation: spin 16s infinite linear;
-    -ms-animation: spin 16s infinite linear;
+    animation: spin 30s infinite linear;
+    -webkit-animation: spin 30s infinite linear;
+    -moz-animation: spin 30s infinite linear;
+    -ms-animation: spin 30s infinite linear;
 }
-.text {
+
+.mid-autumn-card .text {
 	position: absolute;
-	top: 50%;
-	left: 33%;
+	width: 20%;
+	height: 10%;
+	top: 18.5vw;
+	left: 14vw;
 	z-index: 2;
 	animation: rotateX 4s forwards linear;
 	-webkit-animation: rotateX 4s forwards linear;
 	-moz-animation: rotateX 4s forwards linear;
 	-ms-animation: rotateX 4s forwards linear;
 }
-.cloud1, .cloud2, .cloud3 {
+
+.mid-autumn-card .group-1 {
 	position: absolute;
-	z-index: 3;
-	transform: scale(0.8);
+	width: 22%;
+	height: 12%;
+	z-index: 1;
+	left: 5%;
+	top: 85%;
+	animation: gothroughMoon 20s infinite linear;
+	-webkit-animation: gothroughMoon 20s infinite linear;
+	-moz-animation: gothroughMoon 20s infinite linear;
+	-ms-animation: gothroughMoon 20s infinite linear;
 }
-.cloud1 {
-	left: 0;
-	top: 25%;
-	animation: moveLtoR 40s infinite linear;
-}
-.cloud2 {
-	right: 6%;
-	top: 28%;
-	animation: moveTtoB 40s infinite ease-out;
-}
-.cloud3 {
-	left: 0;
-	top: 55%;
-	animation: moveBtoT 40s infinite ease-out;
-}
-.cloud4 {
+
+.mid-autumn-card .group-1 .cloud-1 {
+	z-index: 1;
 	position: absolute;
-	z-index: 3;
-	left: 0%;
+}
+
+.mid-autumn-card .group-1 .rabit-1 {
+	position: absolute;
+	z-index: 2;
+	left: 38%;
+	top: -25%;
+	width: 25%;
+}
+
+.mid-autumn-card .group-2 {
+	position: absolute;
+	z-index: 1;
 	top: 75%;
-	transform: scale(0.8);
-	animation: spinmove 7s infinite linear;
-	-webkit-animation: spinmove 7s infinite linear;
-	-moz-animation: spinmove 7s infinite linear;
-	-ms-animation: spinmove 7s infinite linear;
+	right: 5%;
+	width: 30%;
+	height: 18%;
+	animation: moveUp-Down 20s infinite linear;
+	-webkit-animation: moveUp-Down 20s infinite linear;
+	-moz-animation: moveUp-Down 20s infinite linear;
+	-ms-animation: moveUp-Down 20s infinite linear;
 }
-}
-.cloud5 {
+
+.mid-autumn-card .group-2 .cloud-2 {
 	position: absolute;
 	right: 4%;
 	top: 6%;
 	z-index: 1;
 	transform: scale(0.6);
 }
-.rabit1, .rabit2, .rabit3 {
+
+.mid-autumn-card .group-2 .rabit-2 {
 	position: absolute;
-	z-index: 4;
-}
-.rabit1 {
-	left: 16%;
-	top: 75%;
-	animation: jump 3s infinite linear;
-	-webkit-animation: jump 3s infinite linear;
-	-moz-animation: jump 3s infinite linear;
-	-ms-animation: jump 3s infinite linear;
-}
-.rabit2 {
-	right: 20%;
-	top: 15%;
 	z-index: 2;
-	animation: jumps 3s infinite linear;
-	-webkit-animation: jumps 3s infinite linear;
-	-moz-animation: jumps 3s infinite linear;
-	-ms-animation: jumps 3s infinite linear;
+	left: 30%;
+	top: 15%;
+	animation: jumps 1.5s infinite linear;
+	-webkit-animation: jumps 1.5s infinite linear;
+	-moz-animation: jumps 1.5s infinite linear;
+	-ms-animation: jumps 1.5s infinite linear;
 }
-.rabit3 {
-	right: 35%;
+
+.mid-autumn-card .group-2 .rabit-3 {
+	position: absolute;
+	left: 4%;
 	top: 8%;
 	z-index: 2;
 	animation: rotateY 3s infinite linear;
@@ -141,6 +157,46 @@
 	-ms-animation: rotateY 3s infinite linear;
 	-webkit-animation: rotateY 3s infinite linear;
 }
+
+.letter {
+	background-color: #2f4942;
+	padding: 4%;
+	overflow: hidden;
+}
+
+.letter .content {
+	width: 100%;
+	height: 100%;
+	color: white;
+	text-align: center;
+}
+.letter .content h1 {
+	opacity: 0;
+	color: #2f4942;
+	animation: appear 4s forwards linear;
+}
+
+.letter .content .cake {
+	top: -20%;
+	width: 100%;
+	position: relative;
+	animation: moveDown 2s forwards linear;
+}
+.letter .content .cake img {
+	width: 80%;
+	position: absolute;
+	left: 10%;
+}
+
+audio {
+	position: absolute;
+	width: 50%;
+	height: 8%;
+	top: 120%;
+	left: 25%;
+	animation: moveUp 2s forwards linear;
+}
+
 @media (min-width: 576px) {
 
 }
@@ -149,91 +205,6 @@
 }
 @media (min-width: 992px) {
 
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	50% {
-		transform: rotate(360deg);
-	}
-	100% {
-		transform: rotate(0deg);
-	}
-}
-
-@-webkit-keyframes spin {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	50% {
-		-webkit-transform: rotate(360deg);
-	}
-	100% {
-		-webkit-transform: rotate(0deg);
-	}
-}
-
-@-moz-keyframes spin {
-	0% {
-		-moz-transform: rotate(0deg);
-	}
-	50% {
-		-moz-transform: rotate(360deg);
-	}
-	100% {
-		-moz-transform: rotate(0deg);
-	}
-}
-
-@keyframes moveLtoR {
-	25% {
-		top: 30%;
-		left: 35%;
-	}
-	50% {
-		top: 50%;
-		left: 32%;
-	}
-	75% {
-		top: 30%;
-		left: 30%;
-	}
-	100% {
-		top: 25%;
-		left: 0;
-	}
-}
-
-@keyframes moveBtoT {
-	50% {
-		top: 25%;
-		left: 10%;
-	}
-	100% {
-		top: 55%;
-		left: 0;
-	}
-}
-
-@keyframes moveTtoB {
-	25% {
-		top: 30%;
-		right: 0;
-	}
-	50% {
-		top: 70%;
-		right: 10%;
-	}
-	75% {
-		top: 45%;
-		right: 10%;
-	}
-	100% {
-		top: 28%;
-		right: 6%;
-	}
 }
 
 @keyframes moveAround {
@@ -251,24 +222,46 @@
 	}
 }
 
-@keyframes jump {
-	6% {
-		top: 71%;
-		left: 16%;
+@keyframes moveArounds {
+	25% {
+		transform: rotateZ(15deg);
 	}
-	12% {
-		top: 75%;
-		left: 16%;
+	50% {
+		transform: rotateZ(0deg);
+	}
+	75% {
+		transform: rotateZ(-15deg);
 	}
 	100% {
-		top: 75%;
-		left: 16%;
+		transform: rotateZ(0deg);
 	}
 }
 
-@keyframes moveBtoTtoB {
+@keyframes spin {
 	50% {
-		top: 60%;
+		transform: rotate(360deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes rotateX {
+	to {
+		transform: rotateX(360deg);
+	}
+}
+
+@keyframes gothroughMoon {
+	to {
+		top: -10%;
+		left: 110%;
+	}
+}
+
+@keyframes moveUp-Down {
+	50% {
+		top: 40%;
 		right: 0;
 	}
 	100% {
@@ -287,43 +280,38 @@
 }
  
 @keyframes jumps {
-	6% {
-		top: 8%;
-		right: 20%;
+	20% {
+		top: 5%;
+		left: 30%;
 	}
-	12% {
+	30% {
 		top: 15%;
-		right: 20%;
+		left: 30%;
 	}
 	100% {
 		top: 15%;
-		right: 20%;
+		left: 30%;
 	}
 }
 
-@keyframes rotateX {
+@keyframes appear {
 	to {
-		transform: rotateX(360deg);
+		opacity: 1;
+		color: white;
 	}
 }
-@keyframes spinmove {
-	25% {
-		left: 1%;
-		top: 74%;
-	}
-	50% {
-		left: 0;
-		top: 75%;
-	}
-	75% {
-		left: 0;
-		top: 78%;
-	}
-	100% {
-		left: 0;
-		top: 75%;
+
+@keyframes moveDown {
+	to {
+		top: 0.3vw;
 	}
 }
+@keyframes moveUp {
+	to {
+		top: 85%;
+	}
+}
+
 
 
 
