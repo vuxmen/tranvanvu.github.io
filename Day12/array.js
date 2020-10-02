@@ -21,12 +21,14 @@ var l2_arr = [
 
 var l3_arr = [
 		'10',
+		['Sony', 2020, 'PS5'],
 		{
 			name: 'PS5',
 			gamepad: 'dualshock',
 			prize: 15000000
 		},
-		['Sony', 2020, 'PS5']
+		['Sony', 2020, 'PS5'],
+		10
 	];
 
 var l4_arr = [
@@ -36,10 +38,12 @@ var l4_arr = [
 			name: 'PS5',
 			gamepad: 'dualshock',
 			prize: 15000000
-		}
+		},
+		10
 	];	
 
 var l5_arr = [
+		10,
 		'jquery',
 		{
 			type: 'front-end',
@@ -47,17 +51,19 @@ var l5_arr = [
 		},
 		['open-source', 2020],
 		true,
-		10,
+		10
 	];
 
 var l6_arr = [
 		'nodeJs',
+		10,
 		['open-source', 2020],
 		{
 			type: 'back-end',
 			foundation: 'js',
 		},
 		'10',
+		10,
 		true
 	];	
 var hex = '0123456789ABCDEF';
@@ -140,6 +146,24 @@ $('.btn-result').eq(2).one('click', function() {
 
 function sameEl(arr1, arr2) {
 	var sameArr = [];
+	for (var m = 0; m < arr1.length ; m ++) {
+		for (var n = m + 1; n < arr1.length; n ++) {
+			if (JSON.stringify(arr1[m]) === JSON.stringify(arr1[n])) {
+				arr1.splice(m, 1);
+				m = m - 1;
+				continue;
+			}
+		}
+	}
+	for (var a = 0; a < arr2.length; a ++) {
+		for (var b = a + 1; b < arr2.length; b ++) {
+			if (JSON.stringify(arr2[a]) === JSON.stringify(arr2[b])) {
+				arr2.splice(a, 1);
+				a = a - 1;
+				continue;
+			}
+		}
+	}
 	for (var i = 0; i < arr2.length; i ++) {
 		arr1.push(arr2[i]);
 	}
@@ -161,12 +185,30 @@ $('.btn-result').eq(3).one('click', function() {
 });
 
 function diffEl(arr1, arr2) {
+	for (var m = 0; m < arr1.length; m ++) {
+		for (var n = m + 1; n < arr1.length; n ++) {
+			if (JSON.stringify(arr1[m]) === JSON.stringify(arr1[n])) {
+				arr1.splice(m, 1);
+				m = m -1;
+				continue;
+			}
+		}
+	}
+	for (var a = 0; a < arr2.length; a ++) {
+		for (var b = a + 1; b < arr2.length; b ++) {
+			if (JSON.stringify(arr2[a]) === JSON.stringify(arr2[b])) {
+				arr2.splice(a, 1);
+				a = a -1;
+				continue;
+			}
+		}
+	}
 	for (var i = 0; i < arr2.length; i ++) {
 		arr1.push(arr2[i]);
 	}
 	for (var j = 0; j < arr1.length - 1; j ++) {
 		for (var k = j + 1; k < arr1.length; k ++) {
-			if (JSON.stringify(arr1[j]) === JSON.stringify(arr1[k])) {
+			if (JSON.stringify((arr1[j])) === JSON.stringify(arr1[k])) {
 				arr1.splice(j,1);
 				arr1.splice(k-1,1);
 				j = j - 1;
@@ -184,13 +226,31 @@ $('.btn-result').eq(4).one('click', function() {
 });
 
 function mergeEl(arr1, arr2) {
+	for (var m = 0; m < arr1.length; m ++) {
+		for (var n = m + 1; n < arr1.length; n ++) {
+			if (JSON.stringify(arr1[m]) === JSON.stringify(arr1[n])) {
+				arr1.splice(m, 1);
+				m = m -1;
+				continue;
+			}
+		}
+	}
+	for (var a = 0; a < arr2.length; a ++) {
+		for (var b = a + 1; b < arr2.length; b ++) {
+			if (JSON.stringify(arr2[a]) === JSON.stringify(arr2[b])) {
+				arr2.splice(a, 1);
+				a = a -1;
+				continue;
+			}
+		}
+	}
 	for (var i = 0; i < arr2.length; i ++) {
 		arr1.push(arr2[i]);
 	}
 	for (var j = 0; j < arr1.length; j ++) {
 		for (var k = j + 1; k < arr1.length; k ++) {
-			if (arr1[j] === arr1[k]) {
-				arr1.splice(k,1);
+			if (JSON.stringify(arr1[j]) === JSON.stringify(arr1[k])) {
+				arr1.splice(j,1);
 				j = j - 1;
 			} 
 		}
@@ -304,7 +364,8 @@ function sortNumb(number) {
 		}
 	}
 	if (arrNumb[0] === '0') {
-		arrNumb.splice(0,1);
+		arrNumb.splice(2, 0, '0');
+		arrNumb.splice(0, 1);
 	}
 	return arrNumb.join('');
 }
@@ -340,7 +401,7 @@ function remove(arr) {
 			}
 		}
 	}
-	return arr;
+	return JSON.stringify(arr);
 }
 
 $('.pre-program').eq(11).html(remove.toString());
@@ -354,12 +415,12 @@ function equal(arr) {
 	var branch = [];
 	for (var i = 0; i < arr.length - 1; i ++) {
 		for ( var j = i + 1; j < arr.length; j ++) {
-			if (arr[i] === arr[j]) {
+			if (JSON.stringify(arr[i]) === JSON.stringify(arr[j])) {
 				branch.push(arr[i]);
 			}
 		}
 	}
-	return branch;
+	return JSON.stringify(branch);
 }
 
 $('.pre-program').eq(12).html(equal.toString());
@@ -409,7 +470,7 @@ $('.pre-program').eq(14).html(lowest.toString());
 
 /// Bài 16:  Viết function chia mảng thành các mảng con có độ dài bằng kích thước (đối số thứ hai) và trả về chúng dưới dạng mảng hai chiều
 $('.btn-result').eq(15).click(function() {
-	$('.pre-result').eq(15).html('Mảng 2 chiều là: [' + newArray(l16_arr, quantity) + ']');
+	$('.pre-result').eq(15).html('Mảng 2 chiều là: ' + newArray(l16_arr, quantity));
 });
 
 function newArray(arr, quantity) {
@@ -424,7 +485,7 @@ function newArray(arr, quantity) {
 	newArr.push(begin);
 	newArr.push(arr);
 	console.log(newArr);
-	return newArr;
+	return JSON.stringify(newArr);
 }
 
 $('.pre-program').eq(15).html(newArray.toString());
