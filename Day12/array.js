@@ -35,9 +35,10 @@ var l4_arr = [
 		['Sony', 2020, 'PS5'],
 		10,
 		{
+			prize: 15000000,
 			name: 'PS5',
-			gamepad: 'dualshock',
-			prize: 15000000
+			gamepad: 'dualshock'
+			
 		},
 		10
 	];	
@@ -489,6 +490,39 @@ function newArray(arr, quantity) {
 }
 
 $('.pre-program').eq(15).html(newArray.toString());
+
+
+var a = 10;
+var x = a; 
+console.log(x);
+ a = 5; 
+ console.log(x);
+ console.log(a);
+ var m = [];
+ m.push(1);
+ console.log(m);
+var person = {
+	name: 'vu',
+	age: 20
+};
+
+var girl = {
+	name: 'elli',
+	age: 30
+}
+girl = person;
+
+person.name = 'online';
+girl.name = 'shara';
+console.log(person);
+
+console.log(1 < 2 < 3);
+
+
+
+
+
+
 
 
 
