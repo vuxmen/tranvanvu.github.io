@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CAROUSEL METHOD 2</title>
+	<link rel="stylesheet" type="text/css" href="Carousel_method2.css">
+</head>
+<body>
+	<div id="container">
+    <div id="carousel">
+      <div id="slide">
+        <section id ="last">SLIDE 5</section>
+        <section>SLIDE 1</section>
+        <section>SLIDE 2</section>
+        <section>SLIDE 3</section>
+        <section>SLIDE 4</section>
+        <section>SLIDE 5</section>
+        <section id="first">SLIDE 1</section>
+      </div>
+        <button id="pre">PRE</button>
+        <button id="next">NEXT</button>
+   </div>
+  </div>
+  <script type="text/javascript">
+   var carousel = document.querySelector('#carousel');
+   var slide = document.querySelector('#slide');
+   var slideChilds = slide.querySelectorAll('section');
+   var preBut = document.querySelector('#pre');
+   var nextBut = document.querySelector('#next');
+   var counter = 1;
+   const defaultX = slideChilds[0].clientWidth;
+   var distance = 0;
+   slide.style.transform = 'translateX(' + -defaultX + 'px)';   
+   nextBut.addEventListener('click', () => {
+    if (counter >= slideChilds.length -1 ) return;
+    slide.style.transition = 'transform 0.4s ease-out';
+    counter++;
+    distance = counter * defaultX;
+      slide.style.transform = 'translateX(' + -distance + 'px)';
+      console.log(counter);
+   });
+    preBut.addEventListener('click', () => {
+    if (counter <= 0) return;
+    slide.style.transition = 'transform 0.4s ease-out';
+    counter--;
+    distance = counter * defaultX;
+      slide.style.transform = 'translateX(' + -distance + 'px)';
+      console.log(counter);
+   });
+   slide.addEventListener('transitionend', () => {
+    if (slideChilds[counter].id === 'first') {
+      slide.style.transition = 'none';
+      slide.style.transform = 'translateX(' + -defaultX + 'px)';
+      counter = 1;
+    }
+    if (slideChilds[counter].id === 'last') {
+      slide.style.transition = 'none';
+      slide.style.transform = 'translateX(' + -(slideChilds.length - 2) * defaultX + 'px)';
+      counter = 5;
+    }
+   });
+  </script>
+
+</body>
+</html>

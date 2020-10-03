@@ -8,17 +8,18 @@
 	<link rel="stylesheet" type="text/css" href="../prism/prism.css">
 	<link rel="stylesheet" type="text/css" href="finalExam.css">
 	<link rel="icon" href="img/favicon.png" sizes="16x16">
+	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row header shadow p-3 rounded">
-			<div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 music">
+			<div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 music">
 				<img src="img/ms_note.png" alt="musicnote">
 			</div>
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 header-text">
+			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 header-text">
 				<span><a href="finalExam.html">Portfolio</a></span>
 			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 avatar">
+			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 avatar">
 				<a href="#"><img src="img/Im.png" alt="Me"></a>
 			</div>
 		</div>
@@ -26,16 +27,64 @@
 			<img src="img/theme.jpg">
 			<div class="theme_above"></div>
 			<ul id="menu">
-				<li class="title"><a href="#">Tech Master</a></li>
+				<li class="title code">
+					<a href="#">Tech Master</a>
+					<ul>
+						<li class="program"><a href="#">HTML & CSS</a></li>
+						<li class="program"><a href="#">JAVASCRIPT</a></li>
+					</ul>	
+				</li>	
 				<li class="title"><a href="#">About me</a></li>
-				<li class="title"><a href="#">Playstation</a></li>
-				<li class="title"><a href="#">Music</a></li>
+				<li class="title"><a href="https://www.playstation.com/en-vn/">Playstation</a></li>
+				<li class="title"><a href="https://www.lindseystirling.com/">Music</a></li>
 			</ul>
+			<div id="motto">
+				<span>CODE for LIFE or LIFE for CODE ?</span>
+			</div>
 		</div>
+		<div class="HTML-CSS slide container shadow mb-5 bg-white rounded">
+			<div class="row subject mb-2 rounded">
+				<span>HTML && CSS</span>
+			</div>
+			<div class="row name-sub mb-2">
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 1</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 2</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 3</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 4</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 5</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 6</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 7</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 8</a></span>
+				<span class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"><a href="#">Bài 9</a></span>
+			</div>
+			<div class= "row slide-show">
+				<div class="carousel-container">
+					<div class="carousel">
+						<div class="carousel-child">
+							<img src="#" alt="Lesson 3">
+						</div>
+						<div class="carousel-child">
+							<img src="#" alt="Lesson 1">
+						</div>
+						<div class="carousel-child">
+							<img src="#" alt="Lesson 2">
+						</div>
+						<div class="carousel-child">
+							<img src="#" alt="Lesson 3">
+						</div>
+						<div class="carousel-child">
+							<img src="#" alt="Lesson 1">
+						</div>
+					</div>
+					<div class="carousel-button">
+						<div class="left_butt"></div>
+						<div class="right_butt"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
 	</div>
-
-
-
 
 
 
@@ -45,5 +94,6 @@
 		<script src="../jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="finalExam.js"></script>
 		<script src="../prism/prism-highlight.js"></script>
+		<script src="../bootstrap-4.5.2-dist/js/bootstrap.js"></script>
 </body>
 </html>

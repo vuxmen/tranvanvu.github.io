@@ -12,6 +12,7 @@
 	position: fixed;
 	top: -10vw;
 	animation: dropdown 1.5s forwards ease-in-out;
+	z-index: 2;
 }
 
 .avatar {
@@ -31,6 +32,10 @@
 	opacity: 0.6;
 }
 
+.music img:hover {
+	cursor: pointer;
+}
+
 .header-text {
 	display: flex;
 	justify-content: center;
@@ -43,6 +48,7 @@
 	font-size: 4vw;
 	text-decoration: none;
 	animation: changeCol 1s 1s forwards linear;
+	transition: color 1s linear;
 }
 
 .avatar a {
@@ -57,16 +63,16 @@
 .theme {
 	position: relative;
 	top: -10vw;
-	z-index: -1;
 }
 
 .theme_above {
 	background-color: #998686;
 	opacity: 0.7;
-	z-index: 2;
+	z-index: 1;
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	transition: opacity 0.5s linear;
 }
 
 .theme img {
@@ -77,18 +83,19 @@
 	list-style-type: none;
 	padding: 0;
 	position: absolute;
-	left: 5vw;
+	left: 10vw;
 	height: 100%;
-	width: 20vw;
+	width: 15vw;
 	margin: 0;
-	z-index: 3;
+	z-index: 1;
 }
 
 #menu .title {
 	position: absolute;
-	bottom: 0;
 	width: 100%;
 	text-align: center;
+	visibility: hidden;
+	opacity: 0.2;
 }
 
 #menu .title a {
@@ -99,26 +106,131 @@
 }
 
 #menu .title:nth-child(1) {
-	top: 60%;
-	animation: runUp-tech 1s 1s forwards linear;
+	bottom: 45%;
+	animation: runUp-tech 0.5s 0.1s forwards linear;
 }
 
 #menu .title:nth-child(2) {
-	top: 70%;
-	animation: runUp-about 1.5s 0.5s forwards linear;
+	bottom: 40%;
+	animation: runUp-about 0.5s 0.6s forwards linear;
 }
 
 #menu .title:nth-child(3) {
-	top: 80%;
-	animation: runUp-ps 1s 3s forwards linear;
+	bottom: 35%;
+	animation: runUp-ps 0.5s 1.1s forwards linear;
 }
 
 #menu .title:nth-child(4) {
-	top: 90%;
-	animation: runUp-music 1s 4s forwards linear;
+	bottom: 30%;
+	animation: runUp-music 0.5s 1.6s forwards linear;
 }
 
+#menu .title ul {
+	position: absolute;
+	top: 0;
+	padding: 0;
+	width: 150%;
+	height: 100%;
+	list-style-type: none;
+	display: flex;
+	left: 100%;
+	top: 50%;
+	visibility: hidden;
+}
 
+#menu .title ul li {
+	flex: 1 1 50%;
+}
+
+#menu .title ul li a {
+	font-size: 1.5vw;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 3vw;
+	text-align: left;
+}
+
+#menu .title ul li a:hover {
+	color: white;
+}
+
+#menu .title.code:hover ul {
+	animation: showUp 0.5s forwards linear;
+}
+
+#menu .title:hover a {
+	color: #fadd5d;
+}
+
+#motto {
+	position: absolute;
+	right: 10%;
+	top: 50%;
+	animation: appear 1.5s 0.5s forwards linear;
+	visibility: hidden;
+}
+
+#motto span {
+	font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
+	font-size: 2vw;
+	color: yellow;
+	
+}
+
+.HTML-CSS.slide {
+	margin-bottom: 4vw;
+	position: relative;
+	top: -8vw;
+}
+
+.HTML-CSS .subject {
+	justify-content: center;
+	background-color: #d1ceb3;
+	height: 3vw;
+	line-height: 3.3vw;
+}
+
+.HTML-CSS .subject span {
+	font-size: 1.5vw;
+	color: white;
+}
+
+.HTML-CSS .subject span:hover {
+	cursor: pointer;
+}
+
+.HTML-CSS .name-sub span a {
+	text-decoration: none;
+	color: blue;
+	font-size: 1.5vw;
+}
+
+.HTML-CSS .name-sub span a:hover {
+	text-decoration: underline;
+}
+
+.carousel-container {
+	width: 100%;
+	overflow: hidden;
+	height: 45vw;
+	padding: 1vw;
+	position: relative;
+}
+
+.carousel-container .carousel {
+	width: 500%;
+	height: 30vw;
+	display: flex;
+
+}
+
+.carousel-container .carousel .slide-child {
+	flex: 0 0 20%;
+}
+
+.carousel-container .carousel .slide-child img {
+	width: 100%;
+}
 
 @keyframes dropdown {
 	to {
@@ -143,29 +255,52 @@
 
 @keyframes runUp-tech {
 	to {
-		top: 50%
+		bottom: 50%;
+		visibility: visible;
+		opacity: 0.6;
 	}
 } 
 
 @keyframes runUp-about {
-	
 	to {
-		top: 60%
+		bottom: 45%;
+		visibility: visible;
+		opacity: 0.6;
 	}
 } 
 
 @keyframes runUp-ps {
 	to {
-		top: 70%
+		bottom: 40%;
+		visibility: visible;
+		opacity: 0.6;
 	}
-} 
+}
 
 @keyframes runUp-music {
 	to {
-		top: 80%
+		bottom: 35%;
+		visibility: visible;
+		opacity: 0.6;
 	}
-} 
+}  
+ @keyframes showUp {
+ 	to {
+ 		visibility: visible;
+ 		left: 100%;
+ 		top: 0;
+ 		opacity: 0.6;
+ 	}
+ }
 
+@keyframes appear {
+	to {
+		visibility: visible;
+		top: 45%;
+		right: 10%;
+		transform: scale(1.2);
+	}
+}
 
 
 
