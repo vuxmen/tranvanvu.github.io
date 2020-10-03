@@ -77,24 +77,48 @@
 	list-style-type: none;
 	padding: 0;
 	position: absolute;
-	top: 100%;
+	left: 5vw;
+	height: 100%;
+	width: 20vw;
+	margin: 0;
 	z-index: 3;
 }
 
-#menu >li {
+#menu .title {
 	position: absolute;
-
+	bottom: 0;
+	width: 100%;
+	text-align: center;
 }
 
-#menu >li a {
+#menu .title a {
 	text-decoration: none;
+	color: white;
+	font-size: 2vw;
 
 }
 
-#menu >li:nth-child(1) {
-	top: 0;
-	/*animation: runUp 0.5s forwards linear;*/
+#menu .title:nth-child(1) {
+	top: 60%;
+	animation: runUp-tech 1s 1s forwards linear;
 }
+
+#menu .title:nth-child(2) {
+	top: 70%;
+	animation: runUp-about 1.5s 0.5s forwards linear;
+}
+
+#menu .title:nth-child(3) {
+	top: 80%;
+	animation: runUp-ps 1s 3s forwards linear;
+}
+
+#menu .title:nth-child(4) {
+	top: 90%;
+	animation: runUp-music 1s 4s forwards linear;
+}
+
+
 
 @keyframes dropdown {
 	to {
@@ -117,12 +141,30 @@
 	}
 }
 
-@keyframes runUp {
+@keyframes runUp-tech {
 	to {
-		top: 20%;
+		top: 50%
 	}
 } 
 
+@keyframes runUp-about {
+	
+	to {
+		top: 60%
+	}
+} 
+
+@keyframes runUp-ps {
+	to {
+		top: 70%
+	}
+} 
+
+@keyframes runUp-music {
+	to {
+		top: 80%
+	}
+} 
 
 
 
