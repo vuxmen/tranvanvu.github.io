@@ -209,27 +209,53 @@
 	text-decoration: underline;
 }
 
-.carousel-container {
+#carousel-container {
 	width: 100%;
-	overflow: hidden;
-	height: 45vw;
-	padding: 1vw;
+	height: 55vw;
 	position: relative;
+	overflow: hidden;
 }
 
-.carousel-container .carousel {
+#carousel-container #carousel {
+	position: relative;
 	width: 500%;
-	height: 30vw;
+	height: 50vw;
 	display: flex;
-
+	flex-direction: row;
+	transform: translateX(-20%);
 }
 
-.carousel-container .carousel .slide-child {
+#carousel-container #carousel .carousel-child {
 	flex: 0 0 20%;
+	height: 45vw;
 }
 
-.carousel-container .carousel .slide-child img {
+#carousel-container #carousel .carousel-child img {
+	height: 100%;
 	width: 100%;
+}
+
+#carousel {
+	transition: transform 0.5s linear;
+}
+
+.fas.fa-angle-left, .fas.fa-angle-right {
+	position: absolute;
+	top: 40%;
+	color: grey;
+	opacity: 0.5;
+}
+
+.fas.fa-angle-left:hover , .fas.fa-angle-right:hover {
+	cursor: pointer;
+}
+
+.fas.fa-angle-left {
+	left: 2vw;
+}
+
+.fas.fa-angle-right {
+	right: 2vw;
 }
 
 @keyframes dropdown {
