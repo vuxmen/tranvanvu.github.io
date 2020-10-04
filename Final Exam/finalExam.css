@@ -4,6 +4,9 @@
   src: url(Marlena.ttf);
 }
 
+.body-sub {
+	background-color: #F0F0E7;
+}
 .header {
 	height: 10vw;
 	width: 100%;
@@ -92,6 +95,15 @@
 	width: 15vw;
 	margin: 0;
 	z-index: 1;
+}
+
+#menu.sub-menu {
+	left: 60vw;
+}
+
+#menu.sub-menu-me {
+	left: 40%;
+	top: 5vw;
 }
 
 #menu .title {
@@ -236,6 +248,7 @@
 iframe {
 	height: 100%;
 	width: 100%;
+	border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .fas.fa-angle-left, .fas.fa-angle-right {
@@ -285,6 +298,57 @@ iframe {
 
 .card-body.exercise p {
 	font-size: 1.5vw;
+}
+
+.card-body.exercise b {
+	font-size: 1.5vw;
+}
+
+.set-height {
+	height: 45vw;
+}
+
+.set-height-2 {
+	height: 30vw;
+}
+
+.set-height-3 {
+	height: 25vw;
+}
+
+.position {
+	position: relative;
+	top: -4vw;
+}
+
+.row.inform .card-header, .about .card-header {
+	font-size: 2vw;
+	color: red;
+	font-weight: bold;
+	text-align: center;
+}
+
+#myself {
+	height: 100%;
+}
+
+#myself img {
+	height: 100%;
+	width: 100%;
+}
+
+#myself .card-body {
+	text-align: center;
+	font-size: 2vw;
+}
+
+#myself .card-body p {
+	color: #17a2b8;
+}
+
+.position-fix {
+	position: relative;
+	top: -6vw;
 }
 
 @keyframes dropdown {
