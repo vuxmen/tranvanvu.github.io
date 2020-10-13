@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMA6(continue)</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../bootstrap-4.5.2-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../prism/prism.css">
+</head>
+<body>
+	<div class="container">
+		<p class="m-auto setP">JAVASCRIPT ECMA6 (continue)</p>
+		<pre>
+		<code class="pre-program language-javascript">
+			console.log('--------------------DEFAULT PARAMETER------------------');
+function sum (a,b) {
+	return a + b;
+}
+function sum2 (a) {
+	return a + b;
+}
+console.log(sum(10, 5))
+// console.log(sum2(10));// error notdefined
+
+function repeatStr(string) {
+	return string.repeat(5);
+}
+console.log(repeatStr('heart'));
+
+console.log('----------------------REST PARAMETER-------------------');
+
+
+console.log('-----------------------SPREAD OPERATOR--------------------------');
+let max = Math.max(2, 7, 9, -2, 10);
+console.log(max);
+let maxX = Math.max([2, 7, 8, -2, 10]);
+console.log(maxX); //NaN: argument is not array
+let maxA = Math.max(...[2, 3, 6, -4, 0]);
+// console.log(typeof ...[2,3]); Cant typeof ...
+console.log([...[3, 3]]);
+console.log(typeof []);
+let arr1 = [1, 2, 3];
+let arr2 = [0, 2, 4];
+let arr = [...arr1, 'im', 788, ...arr2];
+console.log(arr);
+let user = {
+	name: 'Vu',
+	age: 29
+}
+let userCopy = {...user};
+userCopy.age = 30;
+
+console.log(user);
+console.log(userCopy);
+console.log('If keys are the same, the last ...object will be overwrite to another');
+user2 = {...userCopy, ...user};
+console.log(user2);
+		</code>
+	</pre>
+	</div>
+	<script src="../jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="day16.js"></script>
+	<script src="../prism/prism-highlight.js"></script>
+</body>
+</html>
