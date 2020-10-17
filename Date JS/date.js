@@ -165,6 +165,7 @@ function beginofWeek() {
 	let month = varDate.getMonth();
 	let year = varDate.getFullYear();
 	let indexDay = varDate.getDay();
+	console.log(today);
 	console.log(indexDay);
 	let beginDay;
 	if (indexDay < 1) {
