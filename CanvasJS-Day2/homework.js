@@ -78,7 +78,10 @@ button[3].addEventListener('click', () => {
 	console.log(pen.font);
 });
 
-
+button[4].addEventListener('click', () => {
+	pen.clearRect(0, 0, canvas.width, canvas.height);
+	
+});
 
 
 
