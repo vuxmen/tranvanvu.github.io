@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Listener HomeWork</title>
+	<link rel="stylesheet" type="text/css" href="homework.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-3 col-lg-4 col-md-8 col-sm-12">
+				<div class="card" id="tools">
+					<div class="card-header bg-info text-white">Tools Brush</div>
+					<ul id="shape">
+						<li>
+							<div class="title bg-light red">Shape</div>
+							<ul id="rectangle">
+								<li class="child">
+									<div class="title bg-light green">Rectangle</div>
+									<ul>
+										<li class="input-area">CoordinateX: 
+											<input type="number">
+										</li>
+										<li class="input-area">CoordinateY: 
+											<input type="number">
+										</li>
+										<li class="input-area">Width:
+											<input type="number">
+										</li>
+										<li class="input-area">Height:
+											<input type="number">
+										</li>
+										<li class="input-area">BorderWidth:
+											<input type="number">
+										</li>
+										<li class="input-area">BG Color:
+											<input type="text" placeholder="ex: blue or #fefefe">
+										</li>
+										<li class="input-area">
+											<button>Draw</button>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<ul id="circle">
+								<li class="child">
+									<div class="title bg-light green">Circle</div>
+									<ul>
+										<li class="input-area">CoordinateX: 
+											<input type="number">
+										</li>
+										<li class="input-area">CoordinateY: 
+											<input type="number">
+										</li>
+										<li class="input-area">Radius:
+											<input type="number">
+										</li>
+										<li class="input-area">BorderWidth:
+											<input type="number">
+										</li>
+										<li class="input-area">BG Color:
+											<input type="text" placeholder="ex: blue or #fefefe">
+										</li>
+										<li class="input-area">
+											<button>Draw</button>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<ul id="circleN">
+								<li class="child">
+									<div class="title bg-light green">Circle x n</div>
+									<ul>
+										<li class="input-area">Number:
+											<input type="number">
+										</li>
+										<li class="input-area">
+											<button>Draw</button>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="text">
+						<li class="child">
+							<div class="title bg-light red">Text</div>
+							<ul>
+								<li class="input-area">Text: 
+									<input type="text">
+								</li>
+								<li class="input-area">CoordinateX: 
+									<input type="number">
+								</li>
+								<li class="input-area">CoordinateY: 
+									<input type="number">
+								</li>
+								<li class="input-area">Font-size:
+									<input type="text" placeholder="ex: 10px sans-serif">
+								</li>
+								<li class="input-area">Color: 
+									<input type="text" placeholder="ex: blue or #fefefe">
+								</li>
+								<li class="input-area">
+									<button>Draw</button>
+								</li>
+							</ul>
+						</li>
+					</ul>	
+				</div>
+			</div>
+			<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12">
+				<canvas id="canvas">
+			
+				</canvas>
+			</div>
+		</div>
+	</div>
+	
+		
+			
+	
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="homework.js"></script>
+</body>
+</html>
