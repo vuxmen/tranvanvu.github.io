@@ -62,7 +62,8 @@ document.addEventListener('keypress', () => {
 const canvas2 = document.getElementById('canvas2');
 let pen2 = canvas2.getContext('2d');
 canvas2.width = innerWidth;
-canvas2.height = innerHeight;
+canvas2.height = window.outerHeight;
+console.log(canvas2.height);
 canvas2.style.border = '1px solid black';
 pen2.strokeStyle = 'black';
 pen2.rect(0.05 * canvas2.width, 0.05 * canvas2.height, 0.9* canvas2.width, 0.9 * canvas2.height);
