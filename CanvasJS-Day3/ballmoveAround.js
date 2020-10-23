@@ -10,7 +10,7 @@ class Ball {
 		this.y = y;
 		this.radius = radius;
 		this.color = color;
-		this.dx = 0;
+		this.dx = 5;
 		this.dy = 0;
 	}
 
@@ -46,21 +46,25 @@ class Ball {
 let ball1 = new Ball(30, 30, 30, 'red');
 
 ball1.draw();
-
-document.addEventListener('keydown', () => {
-	if (event.keyCode == 32) {
-		ball1.dx = 0;
-		ball1.dy = 0;
-	}
-});
+var state = false;
 
 function animate() {
 	requestAnimationFrame(animate);
 	pen.clearRect(0, 0, canvas.width, canvas.height);
 	ball1.move();
+	state = true;
 }
 
-animate();
+document.addEventListener('keydown', () => {
+	if (event.keyCode == 32 && state == true) {
+		ball1.dx = 0;
+		ball1.dy = 0;
+	} else if (event.keyCode == 32 && state == false) {
+		animate();
+	}
+});
+
+
 
 
 
