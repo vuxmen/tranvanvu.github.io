@@ -12,10 +12,10 @@ pen.lineTo(100, 200);
 pen.lineTo(100, 100);
 pen.fill();
 pen.beginPath();
-pen.moveTo(100, 220);
-pen.lineTo(200, 120);
-pen.lineTo(200, 220);
-pen.lineTo(100, 220);
+pen.moveTo(120, 220);
+pen.lineTo(220, 120);
+pen.lineTo(220, 220);
+pen.lineTo(120, 220);
 pen.stroke();
 
 
