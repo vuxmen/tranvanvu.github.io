@@ -1,8 +1,19 @@
 let canvas = document.getElementById('canvas');
 let pen = canvas.getContext('2d');
-canvas.width = 1200;
-canvas.height = 600;
 canvas.style.border = '1px solid red';
+canvas.style.backgroundColor = 'black';
+canvas.width = 0.9  * window.outerWidth;
+canvas.height = 0.8 * window.outerHeight;
+window.addEventListener('resize', () => {
+	canvas.style.border = '1px solid red';
+	canvas.width = 0.9  * window.outerWidth;
+	canvas.height = 0.8 * window.outerHeight;
+});
+
+let username = 'vuxmen';
+let audio = new Audio('http://dight310.byu.edu/media/audio/FreeLoops.com/5/5/Mouse%20Click%20Fast.wav-23232-Free-Loops.com.mp3');
+let numb = 0;
+let size = 12;
 
 class Ball {
 	constructor(x, y, radius, color) {
@@ -16,20 +27,30 @@ class Ball {
 
 	draw() {
 		pen.beginPath();
+		pen.shadowBlur = 0
 		pen.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
 		pen.fillStyle = this.color;
 		pen.fill();
 	}
 
 	drawBoss() {
+		if (numb % 10 == 0 && numb != 0 && numb != arrball.length) {
+			this.radius *= 1.005;
+			size *=1.005;
+		}
+
+		pen.shadowBlur = 20;
+		pen.shadowColor = "green";
 		pen.beginPath();
 		pen.fillStyle = this.color;
 		pen.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
 		pen.fill();
+
 		pen.beginPath();
-		pen.fillStyle = 'black';
-		pen.font = '18px Georgia';
-		pen.fillText('vuxmen', this.x - this.radius/2, this.y);
+		pen.font = `${size}px Georgia`;
+		pen.fillStyle = 'white';
+		pen.fillText(username, this.x - 1.4 * this.radius/2, this.y + 0.1 * this.radius);
+
 	}
 
 	move(arrball) {
@@ -46,34 +67,26 @@ class Ball {
 				e.x = undefined;
 				e.y = undefined;
 				numb ++;
+				audio.play();
 			}
 		});
-		
-		
 	}
 }
 
+let bossBall = new Ball(60, 60, 30, 'orange');
 let arrball = [];
-for (let i =0; i < 20; i ++) {
-	let x = Math.floor(Math.random() * canvas.width);
-	let y = Math.floor(Math.random() * canvas.height);
-	let point = new Ball(x, y, 8, 'red');
+for (let i =0; i < 30; i ++) {
+	let radius = 8;
+	let x = Math.floor(Math.random() * (canvas.width - radius));
+	let y = Math.floor(Math.random() * (canvas.height - radius));
+	while (x <= bossBall.x + bossBall.radius && y <= bossBall.y + bossBall.radius || x <= radius || x >= canvas.width - radius || y <= radius || y >= canvas.height - radius) {
+		x = Math.floor(Math.random() * (canvas.width - radius));
+		y = Math.floor(Math.random() * (canvas.height - radius))
+	}
+	let point = new Ball(x, y, radius, 'red');
 	arrball.push(point);
 }
-console.log(arrball);
 
-let bossBall = new Ball(100, 100, 50, 'orange');
-let numb = 0;
-
-// bossBall.drawBoss();
-// arrball.forEach(element => {
-// 	element.draw();
-// });
-
-// pen.beginPath();
-// pen.fillStyle = 'black';
-// pen.font = '50px Georgia';
-// pen.fillText('0', 100, canvas.height - 50);
 
 document.addEventListener('keydown', () => {
 	if (event.keyCode == 37) {
@@ -92,15 +105,22 @@ document.addEventListener('keydown', () => {
 });
 
 function animate() {
+	if (numb == 30) {
+		setTimeout(function(){
+			
+		}, 2000);
+		return
+	}
+
 	requestAnimationFrame(animate);
+	console.log('abc');
 
 	pen.clearRect(0, 0, canvas.width, canvas.height);
 
 	bossBall.drawBoss();
-	console.log(bossBall);
 
 	pen.beginPath();
-	pen.fillStyle = 'black';
+	pen.fillStyle = 'white';
 	pen.font = '50px Georgia';
 	pen.fillText(numb, 100, canvas.height - 50);
 	
@@ -108,10 +128,8 @@ function animate() {
 		element.draw();
 	});
 	bossBall.move(arrball);
-
 }
 
-//bossBall.drawBoss();
 animate();
 
 
