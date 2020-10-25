@@ -11,9 +11,8 @@ window.addEventListener('resize', () => {
 });
 
 let username = 'vuxmen';
-let audio = new Audio('http://dight310.byu.edu/media/audio/FreeLoops.com/5/5/Mouse%20Click%20Fast.wav-23232-Free-Loops.com.mp3');
+let audio = new Audio('sound.mp3');
 let numb = 0;
-let size = 12;
 let state = true;
 
 class Ball {
