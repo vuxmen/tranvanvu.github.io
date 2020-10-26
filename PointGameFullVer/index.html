@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Point Game</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div id="startgame" class="column">
+			<h1 class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8">Bắt đầu Game</h1>
+			<div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8 context">
+				<input id="userInput" type="text" class="br-5 shadow" placeholder="  Nhập tên người chơi">
+				<button id="btn-start" class="br-5 shadow">Chơi game</button>
+			</div>
+		</div>
+		<div id="game" class="column">
+			<h1 class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8">Chơi game</h1>
+			<h2 class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8">Xin chào</h2>
+			<h3 id="username"></h3>
+			<div id="countdown"></div>
+			<canvas id="canvas">
+	
+			</canvas>
+		</div>
+		<div id="endgame" class="column">
+			<h1 class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8">Kết thúc Game</h1>
+			<h1 class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8">Score is: <span id="mark"></span></h1>
+			<div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-min-8 context">
+				<button id="btn-restart" class="br-5 shadow">Chơi lại</button>
+				<button id="btn-quit" class="br-5 shadow">Thoát Game</button>
+			</div>
+		</div>
+		
+	</div>
+
+
+<script src="script.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

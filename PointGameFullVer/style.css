@@ -1,0 +1,269 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: sans-serif;
+	height: 100vh;
+}
+
+body {
+	margin: 0;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 1rem;
+	font-weight: 400;
+	
+}
+
+.container {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#startgame {
+	background-color: #ff8080;
+}
+
+#game {
+	background-color: #00ccff;
+	display: none;
+}
+
+#endgame {
+	background-color: #0080ff;
+	display: none;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+	height: 100vh;
+}
+
+#startgame h1, #endgame h1 {
+	margin: 0;
+	font-size: 3.2rem;
+	flex: 0 0 15%;
+}
+
+#game h1 {
+	margin: 0;
+	font-size: 3.2rem;
+	flex: 0 0 5%;
+}
+
+#startgame .context, #endgame .context {
+	flex: 0 0 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 50px 0 50px;
+}
+
+.context input {
+	flex: 0 0 70%;
+	border: 1px solid #99a6b2;
+	height: 40px;
+}
+
+:-moz-placeholder {
+	font-style: italic;
+}
+
+::-moz-placeholder {
+	font-style: italic;
+}
+
+::-webkit-input-placeholder {
+	font-style: italic;
+}
+
+:-ms-input-placeholder {
+	font-style: italic;
+}
+
+.context button {
+	flex: 0 0 25%;
+	border: 1px solid #99a6b2;
+	height: 40px;
+	cursor: pointer;
+}
+
+#game h2 {
+	margin: 0;
+	font-size: 2.5rem;
+	flex: 0 0 5%;
+}
+
+#game h3 {
+	font-size: 2rem;
+	flex: 0 0 5%;
+	margin: 0;
+	color: red;
+}
+
+.col-sm-6, .col-sm-auto, .col-md-5, .col-lg-4, .col-xl-4 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.br-5 {
+	border-radius: 5px;
+}
+
+.shadow {
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+#canvas {
+	position: absolute;
+	left: 5%;
+	top: 5%;
+	display: none;
+}
+
+#mark {
+	color: orange;
+	font-size: 2rem;
+}
+
+#countdown {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: white;
+	font-size: 3rem;
+
+}
+
+@media (max-width: 575px) {
+	.col-min-8 {
+		flex: 0 0 66.666667%;
+		max-width: 66.666667%;;
+	}
+	
+	#startgame h1, #endgame h1 {
+		padding: 2px 0 2px 0;
+		font-size: 2.1rem;
+		flex: 0 0 5%;
+	}
+
+	#startgame .context, #endgame .context {
+		padding: 0 20px 0 20px;
+		flex: 0 0 10%;
+	}
+
+	.context input {
+		flex: 0 0 65%;
+	}
+
+	.context button {
+		flex: 0 0 30%;
+	}
+
+}
+
+@media (min-width: 576px) {
+	.col-sm-7 {
+		flex: 0 0 58.333333%;
+		max-width: 58.333333%;;
+	}
+	
+	#startgame h1, #endgame h1 {
+		padding: 5px 0 5px 0;
+		font-size: 2.5rem;
+		flex: 0 0 10%;
+	}
+
+	#startgame .context, #endgame .context {
+		padding: 0 30px 0 30px;
+		flex: 0 0 10%;
+	}
+
+	.context input {
+		flex: 0 0 65%;
+	}
+
+	.context button {
+		flex: 0 0 30%;
+	}
+
+}
+
+@media (min-width: 768px) {
+	.col-md-6 {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+
+	#startgame h1, #endgame h1 {
+		padding: 5px 0 5px 0;
+		font-size: 2.4rem;
+	}
+
+	#startgame .context, #endgame .context {
+		padding: 0 50px 0 50px;
+		flex: 0 0 8%;
+	}
+
+	.context input {
+		flex: 0 0 65%;
+	}
+
+	.context button {
+		flex: 0 0 30%;
+	}
+
+}
+
+@media (min-width: 992px) {
+	.col-lg-5 {
+		flex: 0 0 41.666667%;
+		max-width: 41.666667%;
+	}
+
+	#startgame h1, #endgame h1 {
+		padding: 5px 0 5px 0;
+		font-size: 2.8rem;
+	}
+
+	#startgame .context, #endgame .context {
+		padding: 0 60px 0 60px;
+		flex: 0 0 10%;
+	}
+
+	.context input {
+		flex: 0 0 65%;
+	}
+
+	.context button {
+		flex: 0 0 30%;
+	}
+}
+
+@media (min-width: 1200px) {
+	.col-xl-4 {
+		flex: 0 0 33.333333%;
+		max-width: 33.333333%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
