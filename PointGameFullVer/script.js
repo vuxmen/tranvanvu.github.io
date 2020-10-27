@@ -33,6 +33,7 @@ btnStart.addEventListener('click', () => {
 		countdown.innerText -= 1;
 	}, 1000);
 	playGame();
+
 });
 
 btnQuit.addEventListener('click', () => {
@@ -48,16 +49,46 @@ btnRestart.addEventListener('click', () => {
 	document.getElementsByTagName('h2')[0].style.display = 'block';
 	document.getElementsByTagName('h3')[0].style.display = 'block';
 	canvas.style.display = 'none';
+	resetGame();
 	playGame();
+	animate();
 });
 
+function resetGame() {
+	bossBall.x = 60;
+	bossBall.y = 60;
+	bossBall.radius = 30;
+	bossBall.color = 'orange';
+	bossBall.dx = 0;
+	bossBall.dy = 0;
+
+	arrball = [];
+	for (let i = 0; i < 30; i ++) {
+		let radius = 8;
+		let x = Math.floor(Math.random() * (canvas.width - radius));
+		let y = Math.floor(Math.random() * (canvas.height - radius));
+		while (x <= bossBall.x + bossBall.radius && y <= bossBall.y + bossBall.radius || x <= radius || x >= canvas.width - radius || y <= radius || y >= canvas.height - radius) {
+			x = Math.floor(Math.random() * (canvas.width - radius));
+			y = Math.floor(Math.random() * (canvas.height - radius))
+		}
+		let point = new Ball(x, y, radius, 'red');
+		arrball.push(point);	
+	}
+
+	numb = 0;
+
+
+}
+
+let timeout;
 function playGame() {
-	setTimeout(function(){
+	timeout = setTimeout(function(){
 		game.style.display = 'none';
 		endGame.style.display = 'flex';
 		mark.innerText = `${numb} / 30`;
 	}, 22000);
 }
+clearTimeout(timeout);
 
 let canvas = document.getElementById('canvas');
 let pen = canvas.getContext('2d');
