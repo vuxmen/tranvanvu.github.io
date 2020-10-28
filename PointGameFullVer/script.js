@@ -1,3 +1,5 @@
+
+//UI CODE
 const startGame = document.getElementById('startgame');
 const game = document.getElementById('game');
 const endGame = document.getElementById('endgame');
@@ -7,12 +9,12 @@ const btnRestart = document.getElementById('btn-restart');
 const btnQuit = document.getElementById('btn-quit');
 
 const userInput = document.getElementById('userInput');
-const userName = document.getElementById('username');
+const userName = document.getElementById('userName');
 const mark = document.getElementById('mark');
 const countdown = document.getElementById('countdown');
 countdown.innerText = 22;
+
 btnStart.addEventListener('click', () => {
-	animate();
 	if (userInput.value == '') {
 		window.alert('Nhập user name');
 		return
@@ -20,6 +22,9 @@ btnStart.addEventListener('click', () => {
 	userName.innerText = userInput.value;
 	startGame.style.display = 'none';
 	game.style.display = 'flex';
+	arrball = [];
+	randomSmallBall();
+	animate();
 	setTimeout(function() {
 		document.getElementsByTagName('h1')[1].style.display = 'none';
 		document.getElementsByTagName('h2')[0].style.display = 'none';
@@ -32,7 +37,7 @@ btnStart.addEventListener('click', () => {
 		}
 		countdown.innerText -= 1;
 	}, 1000);
-	playGame();
+	endGameShow();
 
 });
 
@@ -41,55 +46,48 @@ btnQuit.addEventListener('click', () => {
 });
 
 btnRestart.addEventListener('click', () => {
+	resetGame();
 	game.style.display = 'flex';
+	countdown.innerText = 22;
 	endGame.style.display = 'none';
 	startGame.style.display = 'none';
-
 	document.getElementsByTagName('h1')[1].style.display = 'block';
 	document.getElementsByTagName('h2')[0].style.display = 'block';
 	document.getElementsByTagName('h3')[0].style.display = 'block';
 	canvas.style.display = 'none';
-	resetGame();
-	playGame();
 	animate();
+	setTimeout(function() {
+		document.getElementsByTagName('h1')[1].style.display = 'none';
+		document.getElementsByTagName('h2')[0].style.display = 'none';
+		document.getElementsByTagName('h3')[0].style.display = 'none';
+		canvas.style.display = 'flex';
+	}, 2000);
+	endGameShow();
 });
 
 function resetGame() {
 	bossBall.x = 60;
 	bossBall.y = 60;
-	bossBall.radius = 30;
+	bossBall.radius = 30; 
 	bossBall.color = 'orange';
-	bossBall.dx = 0;
+	bossBall.fontSize = 12;
+	bossBall.dx = 0; 
 	bossBall.dy = 0;
-
-	arrball = [];
-	for (let i = 0; i < 30; i ++) {
-		let radius = 8;
-		let x = Math.floor(Math.random() * (canvas.width - radius));
-		let y = Math.floor(Math.random() * (canvas.height - radius));
-		while (x <= bossBall.x + bossBall.radius && y <= bossBall.y + bossBall.radius || x <= radius || x >= canvas.width - radius || y <= radius || y >= canvas.height - radius) {
-			x = Math.floor(Math.random() * (canvas.width - radius));
-			y = Math.floor(Math.random() * (canvas.height - radius))
-		}
-		let point = new Ball(x, y, radius, 'red');
-		arrball.push(point);	
-	}
-
 	numb = 0;
-
-
+	arrball = [];
+	randomSmallBall();
 }
 
-let timeout;
-function playGame() {
-	timeout = setTimeout(function(){
+function endGameShow() {
+	setTimeout(function(){
 		game.style.display = 'none';
 		endGame.style.display = 'flex';
 		mark.innerText = `${numb} / 30`;
 	}, 22000);
 }
-clearTimeout(timeout);
 
+
+//CANVAS CODE
 let canvas = document.getElementById('canvas');
 let pen = canvas.getContext('2d');
 canvas.style.border = '1px solid red';
@@ -102,9 +100,9 @@ window.addEventListener('resize', () => {
 	canvas.height = 0.8 * window.outerHeight;
 });
 
-let username = 'vuxmen';
 let audio = new Audio('sound.mp3');
 let numb = 0;
+let myReq;
 let state = true;
 
 class Ball {
@@ -151,7 +149,7 @@ class Ball {
 		pen.beginPath();
 		pen.font = `${this.fontSize}px Georgia`;
 		pen.fillStyle = 'white';
-		pen.fillText(username, this.x - 1.4 * this.radius/2, this.y + 0.1 * this.radius);
+		pen.fillText(userInput.value, this.x - 1.4 * this.radius/2, this.y + 0.1 * this.radius);
 	}
 
 	move(arrball) {
@@ -176,18 +174,57 @@ class Ball {
 
 let bossBall = new Ball(60, 60, 30, 'orange', 12);
 let arrball = [];
-for (let i = 0; i < 30; i ++) {
-	let radius = 8;
-	let x = Math.floor(Math.random() * (canvas.width - radius));
-	let y = Math.floor(Math.random() * (canvas.height - radius));
-	while (x <= bossBall.x + bossBall.radius && y <= bossBall.y + bossBall.radius || x <= radius || x >= canvas.width - radius || y <= radius || y >= canvas.height - radius) {
-		x = Math.floor(Math.random() * (canvas.width - radius));
-		y = Math.floor(Math.random() * (canvas.height - radius))
+
+randomSmallBall();
+
+function randomSmallBall() {
+		for (let i = 0; i < 30; i ++) {
+		let radius = 8;
+		let x = 0;
+		let y = 0;
+		while (x <= bossBall.x + bossBall.radius && y <= bossBall.y + bossBall.radius || x <= radius || x >= canvas.width - radius || y <= radius || y >= canvas.height - radius) {
+			x = Math.floor(Math.random() * (canvas.width - radius));
+			y = Math.floor(Math.random() * (canvas.height - radius))
+		}
+		let point = new Ball(x, y, radius, 'red');
+		arrball.push(point);
 	}
-	let point = new Ball(x, y, radius, 'red');
-	arrball.push(point);
 }
 
+
+function drawText() {
+	pen.beginPath();
+	pen.fillStyle = 'white';
+	pen.font = '50px Georgia';
+	pen.fillText(numb, 100, canvas.height - 50);
+}
+
+function checkMark() {
+	setTimeout(function() {
+		if (numb == arrball.length && state == true) {
+			bossBall.dx = 0;
+			bossBall.dy = 0;
+			state = false;
+		}
+	}, 2000);
+}
+
+function animate() {
+	if (state == false) {
+		cancelAnimationFrame(myReq);
+		return
+	} else {
+		myReq = requestAnimationFrame(animate);
+		pen.clearRect(0, 0, canvas.width, canvas.height);
+		bossBall.drawBoss(arrball);
+		drawText();
+		arrball.forEach(element => {
+			element.draw();
+		});
+		bossBall.move(arrball);
+		checkMark();
+	}
+}
 
 document.addEventListener('keydown', () => {
 	if (event.keyCode == 37) {
@@ -203,43 +240,9 @@ document.addEventListener('keydown', () => {
 		bossBall.dx = 0;
 		bossBall.dy = 5;
 	}
+	console.log(bossBall.dx);
 });
 
-function winGameAlert() {
-	setTimeout(function() {
-		if (numb == arrball.length  && state == true) {
-			bossBall.dx = 0;
-			bossBall.dy = 0;
-			window.cancelAnimationFrame(animate);
-			state = false;
-			return false
-		}
-	}, 2000);
-}
-
-function animate() {
-	winGameAlert();
-	
-	if (winGameAlert() == false) return
-
-	window.requestAnimationFrame(animate);
-
-	console.log('abc');
-	pen.clearRect(0, 0, canvas.width, canvas.height);
-
-	bossBall.drawBoss(arrball);
-
-	pen.beginPath();
-	pen.fillStyle = 'white';
-	pen.font = '50px Georgia';
-	pen.fillText(numb, 100, canvas.height - 50);
-	
-	arrball.forEach(element => {
-		element.draw();
-	});
-	bossBall.move(arrball);
-	
-}
 
 
 
