@@ -55,6 +55,7 @@ btnRestart.addEventListener('click', () => {
 	document.getElementsByTagName('h2')[0].style.display = 'block';
 	document.getElementsByTagName('h3')[0].style.display = 'block';
 	canvas.style.display = 'none';
+	state = true;
 	animate();
 	setTimeout(function() {
 		document.getElementsByTagName('h1')[1].style.display = 'none';
@@ -200,20 +201,18 @@ function drawText() {
 }
 
 function checkMark() {
-	setTimeout(function() {
-		if (numb == arrball.length && state == true) {
+	if (numb == arrball.length && state == true) {
+		setTimeout(function() {
 			bossBall.dx = 0;
 			bossBall.dy = 0;
 			state = false;
-		}
-	}, 2000);
+		}, 2000);
+	}
+	
 }
 
 function animate() {
-	if (state == false) {
-		cancelAnimationFrame(myReq);
-		return
-	} else {
+	if (state == true) {
 		myReq = requestAnimationFrame(animate);
 		pen.clearRect(0, 0, canvas.width, canvas.height);
 		bossBall.drawBoss(arrball);
@@ -223,7 +222,8 @@ function animate() {
 		});
 		bossBall.move(arrball);
 		checkMark();
-	}
+	} 
+	
 }
 
 document.addEventListener('keydown', () => {
