@@ -74,10 +74,10 @@ class FreeHand {
 			let centerY = (this.points[i].y + this.points[i + 1].y) / 2;
 
 			ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, centerX, centerY);
-			ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, this.points[i + 1].x, this.points[i + 1].y);
+			
 		}
 
-		
+		ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, this.points[i + 1].x, this.points[i + 1].y);
 		ctx.stroke();
 	}
 
