@@ -14,6 +14,8 @@ const mark = document.getElementById('mark');
 const countdown = document.getElementById('countdown');
 countdown.innerText = 22;
 
+let interval;
+
 btnStart.addEventListener('click', () => {
 	if (userInput.value == '') {
 		window.alert('Nhập user name');
@@ -31,9 +33,10 @@ btnStart.addEventListener('click', () => {
 		document.getElementsByTagName('h3')[0].style.display = 'none';
 		canvas.style.display = 'flex';
 	}, 2000);
-	setInterval(function(){
+	interval = setInterval(function(){
+		console.log(countdown.innerText);
 		if (countdown.innerText <= 0) {
-			return
+			clearInterval(interval);
 		}
 		countdown.innerText -= 1;
 	}, 1000);
