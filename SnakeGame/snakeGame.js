@@ -97,8 +97,6 @@ class Food {
 		let rowRandom = Math.floor(Math.random() * ((canvas.height - block) / block));
 		this.position = new Block (colRandom, rowRandom);
 	}
-
-
 }
 
 class Snake {
