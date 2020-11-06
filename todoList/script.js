@@ -33,8 +33,9 @@ let todos = [
 	}
 ];
 
-if (typeof (localStorage.getItem('todo')) != 'undefined') {
+if (localStorage.getItem('todo') !== null) {
 	todos = JSON.parse(localStorage.getItem('todos'));
+
 }
 
 
@@ -44,8 +45,6 @@ const todoList = document.querySelector('#todo-list');
 let all = document.querySelector('.all');
 let notFn= document.querySelector('.notfinished');
 let fn = document.querySelector('.finished');
-
-console.log(todos);
 
 function renderUI(arrayData) {
 	notFn.checked = false;
