@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="todoList.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link rel="stylesheet" href="../fontawesome5.14.0/css/all.min.css">
+
+</head>
+<body>
+	<div class="container">
+		<div id="todoList">
+			<h1>Todo List</h1>
+			<div class="row top">
+				<input id="todo-input" type="text" placeholder="  Nhập công việc">
+				<button class="input-btn btn-add">ADD</button>	
+			</div>
+			<div class="row upper">
+				<div class="checkbox state">
+					<input type="checkbox" checked class="all" name="all" onclick="renderUI(todos)">
+					<label for="all">All</label>
+				</div>
+				<div class="checkbox state">
+					<input type="checkbox" class="notfinished" name="notdone" onclick="notFinished(todos)">
+					<label for="notdone">Chưa hoàn thành</label>
+				</div>
+				<div class="checkbox state">
+					<input type="checkbox" class="finished" name="finished" onclick="finished(todos)">
+					<label for="finished">Hoàn thành</label>
+				</div>
+			</div>
+			<div id="todo-list">
+				<div class="row lower">
+					<input type="checkbox">
+					<label class="label">Play a Game</label>
+					<button class="btn btn-update"><i class="far fa-edit"></i></button>
+					<button class="btn btn-delete"><i class="far fa-times-circle"></i></button>
+				</div>	
+				<div class="row lower active">
+					<input type="checkbox">
+					<label class="label">Code explorer</label>
+					<button class="btn btn-update"><i class="far fa-edit"></i></button>
+					<button class="btn btn-delete"><i class="far fa-times-circle"></i></button>
+				</div>	
+				<div class="row lower">
+					<input type="checkbox">
+					<label class="label">Run and run</label>
+					<button class="btn btn-update"><i class="far fa-edit"></i></button>
+					<button class="btn btn-delete"><i class="far fa-times-circle"></i></button>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="todoList.js"></script>
+</body>
+</html>
