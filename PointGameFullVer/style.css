@@ -140,6 +140,7 @@ body {
 	right: 5px;
 	color: white;
 	font-size: 3rem;
+	z-index: 1;
 
 }
 
