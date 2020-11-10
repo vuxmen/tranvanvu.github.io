@@ -65,6 +65,7 @@ function renderUI(arrayData) {
 		`;
 		}
 	}	
+	localStorage.setItem('todos', JSON.stringify(todos));
 }
 
 renderUI(todos);
@@ -75,7 +76,6 @@ input_btn.addEventListener('click', function() {
 	let titleTodo = todo_input.value;
 	if (titleTodo == '') {
 		alert('Chưa nhập dữ liệu');
-		return
 	}
 
 	if (isUpdate) {
@@ -119,6 +119,7 @@ function deleteToggle(id) {
 	for (let i = 0; i < todos.length; i ++) {
 		if (todos[i].id == id) {
 			todos.splice(i, 1);
+			localStorage.setItem('todos', JSON.stringify(todos));
 		}
 	}
 	renderUI(todos);
