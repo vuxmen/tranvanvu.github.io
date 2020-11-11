@@ -4,29 +4,24 @@ let canvas = document.querySelector('#canvas');
 let pen = canvas.getContext('2d');
 let w;
 
-function createCanvas() {
-	canvas.width = 600;
-	canvas.height = 600;
-	canvas.style.border = '2px solid black';
-	canvas.style.display = 'block';
-	canvas.style.margin = 'auto';
-	w = canvas.width / 4;
-}
+canvas.width = 600;
+canvas.height = 600;
+canvas.style.border = '2px solid black';
+canvas.style.display = 'block';
+canvas.style.margin = 'auto';
+w = canvas.width / 4;
 
-let grid;
-
-function setUp() {
-	createCanvas();
-	grid = [
+let grid = [
 		[0, 0, 0, 0],
 		[0, 0, 0, 0], 
 		[0, 0, 0, 0], 
 		[0, 0, 0, 0]
 	];
+
+function setUp() {
+	addItem();
+	addItem();
 	console.log(grid);
-	addItem();
-	addItem();
-	
 }
 
 function randomItem(arr) {
@@ -42,13 +37,10 @@ function addItem() {
 			}
 		}
 	}
-	if (options.length > 0) {
-		let element = randomItem(options);
-		let r = Math.random() * 1;
-		grid[element.x][element.y] = r > 0.5 ? 2 : 4;
-
-			
-	}
+	if (options.length > 0);
+	let element = randomItem(options);
+	let r = Math.random() * 1;
+	grid[element.x][element.y] = r > 0.5 ? 2 : 4;
 }
 
 function drawItem() {
@@ -57,6 +49,7 @@ function drawItem() {
 	pen.lineWidth = 2;
 	pen.textBaseline = 'middle';
 	pen.textAlign = 'center';
+	pen.clearRect(0, 0, canvas.width, canvas.height);
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
 			pen.beginPath();
@@ -65,7 +58,7 @@ function drawItem() {
 			let val = grid[i][j];
 			if (val !== 0) {
 				pen.beginPath();
-				pen.fillText(val, i * w + w/2, j * w + w/2);
+				pen.fillText(val, j * w + w/2, i * w + w/2);
 			}
 		}
 	}
@@ -78,20 +71,25 @@ drawItem();
 function flingTotheLeft(row) {
 	let arr = row.filter(val => val);
 	let missing = 4 - arr.length;
-	let zero = row.fill(0, 0, missing - 1);
-	arr.concat(zero);
-	return arr;
+	let zero = Array(missing).fill(0);
+	let newarr = arr.concat(zero);
+	return newarr;
 }
 
 //Addevent listener
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', event => {
+	console.log(grid);
 	if (event.keyCode == 32) {
 		for (let i = 0; i < 4; i ++) {
 			grid[i] = flingTotheLeft(grid[i]);
-		}
+		}	
+		addItem();
+		drawItem();
 	}
 });
+
+
 
 
 
