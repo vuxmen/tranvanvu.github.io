@@ -24,7 +24,8 @@ function setUp() {
 	addItem();
 }
 
-let count = 0;
+let checkEmpty;
+let checkEqual;
 
 function randomItem(arr) {
  	return arr[Math.floor(Math.random() * arr.length)];
@@ -91,27 +92,40 @@ function mergeEqual(row) {
 
 }
 
-function gameOver() {
+function firstCondition() {
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
 			if (grid[i][j] != 0) {
-				count ++;
+				checkEmpty ++;
 			}
 		}
 	}
-	console.log(count);
 }
 
-//Addevent listener
+function secondCondition() {
+	checkEqual = false;
+	for (let i = 0; i < 4; i ++) {
+		for (let j = 0; j < 4; j ++) {
+			if (grid[i][j] == grid[i][j+1]) {
+				checkEqual = true;
+				return
+			}
+		}
+	}
+}
+
+//addEvent listener
 
 document.addEventListener('keydown', event => {
-	count = 0;
-	gameOver();
-	if (count == 16) {
-		alert('Game Over');
-		return
-	}
+	checkEmpty = 0
+	checkEqual = false;
+	firstCondition();
+	secondCondition();
 	if (event.keyCode == 37) {
+		if (checkEmpty == 16 && checkEqual == false ) {
+			alert('Game Over');
+			return
+		}
 		for (let i = 0; i < 4; i ++) {
 			grid[i] = flingTotheLeft(grid[i]);
 			mergeEqual(grid[i]);
@@ -119,7 +133,21 @@ document.addEventListener('keydown', event => {
 		addItem();
 		drawItem();
 	}
+
+	// if (event.keyCode == 37) {
+	// 	if (checkEmpty == 16 && checkEqual == false ) {
+	// 		alert('Game Over');
+	// 		return
+	// 	}
+	// 	for (let i = 0; i < 4; i ++) {
+	// 		grid[i] = flingTotheLeft(grid[i]);
+	// 		mergeEqual(grid[i]);
+	// 	}	
+	// 	addItem();
+	// 	drawItem();
+	// }
 });
+
 
 
 
