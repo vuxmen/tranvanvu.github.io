@@ -18,11 +18,13 @@ let grid = [
 		[0, 0, 0, 0]
 	];
 
+
 function setUp() {
 	addItem();
 	addItem();
-	console.log(grid);
 }
+
+let count = 0;
 
 function randomItem(arr) {
  	return arr[Math.floor(Math.random() * arr.length)];
@@ -76,13 +78,43 @@ function flingTotheLeft(row) {
 	return newarr;
 }
 
+function mergeEqual(row) {
+	for (let i = 0; i < 3; i ++) {
+		if (row[i] == row[i + 1]) {
+			row[i] *= 2;
+			row.splice(i + 1, 1);
+			row.push(0);
+			return row
+		}
+		
+	}
+
+}
+
+function gameOver() {
+	for (let i = 0; i < 4; i ++) {
+		for (let j = 0; j < 4; j ++) {
+			if (grid[i][j] != 0) {
+				count ++;
+			}
+		}
+	}
+	console.log(count);
+}
+
 //Addevent listener
 
 document.addEventListener('keydown', event => {
-	console.log(grid);
-	if (event.keyCode == 32) {
+	count = 0;
+	gameOver();
+	if (count == 16) {
+		alert('Game Over');
+		return
+	}
+	if (event.keyCode == 37) {
 		for (let i = 0; i < 4; i ++) {
 			grid[i] = flingTotheLeft(grid[i]);
+			mergeEqual(grid[i]);
 		}	
 		addItem();
 		drawItem();
