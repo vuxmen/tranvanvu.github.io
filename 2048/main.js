@@ -24,8 +24,9 @@ function setUp() {
 	addItem();
 }
 
-let checkEmpty;
-let checkEqual;
+let empty;
+let horizon;
+let vertical;
 
 function randomItem(arr) {
  	return arr[Math.floor(Math.random() * arr.length)];
@@ -79,7 +80,7 @@ function flingTotheLeft(row) {
 	return newarr;
 }
 
-function mergeEqual(row) {
+function mergeLeft(row) {
 	for (let i = 0; i < 3; i ++) {
 		if (row[i] == row[i + 1]) {
 			row[i] *= 2;
@@ -92,22 +93,41 @@ function mergeEqual(row) {
 
 }
 
+function flingTotheRight(row) {
+	let arr = row.filter(val => val);
+	let missing = 4 - arr.length;
+	let zero = Array(missing).fill(0);
+	let newarr = zero.concat(arr);
+	return newarr;
+}
+
+function mergeRight(row) {
+	for (let i = 3; i > -1; i --) {
+		if (row[i] == row[i-1]) {
+			row[i] *= 2;
+			row.splice(i - 1, 1);
+			row.unshift(0);
+			return row
+		}
+	}
+}
+
 function firstCondition() {
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
 			if (grid[i][j] != 0) {
-				checkEmpty ++;
+				empty ++;
 			}
 		}
 	}
 }
 
 function secondCondition() {
-	checkEqual = false;
+	horizon = false;
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
 			if (grid[i][j] == grid[i][j+1]) {
-				checkEqual = true;
+				horizon = true;
 				return
 			}
 		}
@@ -117,38 +137,64 @@ function secondCondition() {
 //addEvent listener
 
 document.addEventListener('keydown', event => {
-	checkEmpty = 0
-	checkEqual = false;
+	empty = 0
+	horizon = false;
 	firstCondition();
 	secondCondition();
 	if (event.keyCode == 37) {
-		if (checkEmpty == 16 && checkEqual == false ) {
+		if (empty == 16 && horizon == false ) {
 			alert('Game Over');
 			return
 		}
 		for (let i = 0; i < 4; i ++) {
 			grid[i] = flingTotheLeft(grid[i]);
-			mergeEqual(grid[i]);
+			mergeLeft(grid[i]);
 		}	
 		addItem();
 		drawItem();
 	}
 
-	// if (event.keyCode == 37) {
-	// 	if (checkEmpty == 16 && checkEqual == false ) {
-	// 		alert('Game Over');
-	// 		return
-	// 	}
-	// 	for (let i = 0; i < 4; i ++) {
-	// 		grid[i] = flingTotheLeft(grid[i]);
-	// 		mergeEqual(grid[i]);
-	// 	}	
-	// 	addItem();
-	// 	drawItem();
-	// }
+	if (event.keyCode == 39) {
+		if (empty == 16 && horizon == false ) {
+			alert('Game Over');
+			return
+		}
+		for (let i = 0; i < 4; i ++) {
+			grid[i] = flingTotheRight(grid[i]);
+			mergeRight(grid[i]);
+		}	
+		addItem();
+		drawItem();
+	}
+
+	if (event.keyCode == 38) {
+		// if (checkEmpty == 16 && checkEqual == false ) {
+		// 	alert('Game Over');
+		// 	return
+		// }
+		// for (let i = 0; i < 4; i ++) {
+		// 	grid[i] = flingTotheRight(grid[i]);
+		// 	mergeRight(grid[i]);
+		// }	
+		// addItem();
+		// drawItem();
+	}
+
 });
 
 
+// let arrayx = [
+// 	[1, 2, 4],
+// 	[4, 6, 7],
+// 	[9, 0, 3]
+// ];
+
+// console.log(arrayx[0]);
+
+// let run = (arr, index) => arr.map(x => x[index]);
+
+
+// console.log(run(arrayx, 1));
 
 
 
