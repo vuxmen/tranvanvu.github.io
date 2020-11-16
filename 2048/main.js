@@ -134,6 +134,23 @@ function secondCondition() {
 	}
 }
 
+flingTotheTop(column) {
+	for (let i = 0; i < 4; i ++) {
+		let arr = column.filter(val => val);
+		let missing = 4 - arr.length;
+		let zero = Array(missing).fill(0);
+		let newarr = arr.concat(zero);
+	}
+}
+
+mergeTop() {
+	for (let i = 0; i < 4; i ++) {
+		for (let j = 0; j < 4; j ++) {
+			
+		}
+	}
+}
+
 //addEvent listener
 
 document.addEventListener('keydown', event => {
