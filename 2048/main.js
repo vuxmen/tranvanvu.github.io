@@ -208,10 +208,30 @@ document.addEventListener('keydown', event => {
 
 // console.log(run(arrayx, 1));
 
+function transposeArray(array, arrayLength){
+    var newArray = [];
+    for(var i = 0; i < array.length; i++){
+        newArray.push([]);
+        console.log(newArray);
+        
+    };
+
+    for(var i = 0; i < array.length; i++){
+        for(var j = 0; j < arrayLength; j++){
+            newArray[j].push(array[i][j]);
+        };
+    };
+
+    return newArray;
+}
 
 
-
-
+let array = [
+		[3, 5, 2, 1],
+		[0, 0, 1, 1],
+		[9, 8, 2, 2],
+		[0, 0, 2, 8]
+	];
 
 
 
