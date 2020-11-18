@@ -7,6 +7,7 @@ let sqr = document.querySelector('.sqrt');
 let del = document.querySelector('.del');
 let clear = document.querySelector('.clear');
 let swit = document.querySelector('.switch');
+let checkbox = document.getElementById('toggle-handle');
 let output = 0;
 let input = '';
 let check = false;
@@ -112,6 +113,30 @@ swit.addEventListener('click', () => {
 	ex.innerText = input;	
 	check = true;
 	count = 0;
+});
+
+checkbox.addEventListener('click', () => {
+	if (checkbox.checked) {
+		document.documentElement.style.setProperty('--primary-color', '#333333');
+		document.documentElement.style.setProperty('--bold-color', '#262626');
+		document.documentElement.style.setProperty('--bolder-color', '#202020');
+		document.documentElement.style.setProperty('--boldest-color', '#1A1A1A');
+		document.documentElement.style.setProperty('--light-color', '#4E4E4E');
+		document.documentElement.style.setProperty('--lighter-color', '#858585');
+		document.documentElement.style.setProperty('--bg-color', '#223239');
+		document.documentElement.style.setProperty('--text-color', '#fff');
+		document.documentElement.style.setProperty('--bg-sub-color', '#bbd7e4');
+	} else {
+		document.documentElement.style.setProperty('--primary-color', '#2980B9');
+		document.documentElement.style.setProperty('--bold-color', '#2255A4');
+		document.documentElement.style.setProperty('--bolder-color', '#1B308F');
+		document.documentElement.style.setProperty('--boldest-color', '#241062');
+		document.documentElement.style.setProperty('--light-color', '#44A9C4');
+		document.documentElement.style.setProperty('--lighter-color', '#7AD9CA');
+		document.documentElement.style.setProperty('--bg-color', '#fff');
+		document.documentElement.style.setProperty('--text-color', '#414141');
+		document.documentElement.style.setProperty('--bg-sub-color', '#464646');
+	}
 });
 
 
