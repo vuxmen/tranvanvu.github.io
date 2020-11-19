@@ -1,9 +1,23 @@
 let tag = document.getElementsByTagName('li');
 let deck = document.querySelector('.deck');
 let score = document.querySelector('.moves')
+let popup1 = document.querySelector('.overlay');
+let final = document.querySelector('.finalMove');
+let time = document.querySelector('.content-2');
+let timer = document.querySelector('.timer');
+let close = document.querySelector('.close');
+let replay = document.getElementById('play-again');
+let restart = document.querySelector('.restart');
 let newtag;
 let check = [];
 let move = 0;
+let state = true;
+let same = 0;
+let k;
+let sec = 0;
+let min = 0;
+
+// Reset property of all li tags
 [...tag].forEach(element => {
 	element.classList.remove('open');
 	element.classList.remove('disable');
@@ -11,62 +25,124 @@ let move = 0;
 	element.classList.remove('unmatched');
 }); 
 
+// Random index and return new arr
 function randomIndex(arr) {
 	return arr.sort(function() {
 		return Math.random() - 0.5;
 	});
 }
-
 newtag = randomIndex([...tag]);
-console.log(newtag);
 
+//Remove old child and append new child to deck 
 deck.innerHTML = '';
+newtag.forEach(element => {
+	deck.appendChild(element);
+});
 
-for (let i = 0; i < newtag.length; i ++) {
-	deck.appendChild(newtag[i]);
+// Coundownt
+
+let interval = setInterval(function() {
+	sec ++;
+	if (sec >= 60) {
+		min ++;
+		sec = 0;
+		if (min > 24) {
+			min = 0;
+		}
+	}
+	timer.innerText = `${min} phút ${sec} s`;
+}, 1000);
+
+
+
+
+// Declare callback
+function callback() {
+	check.forEach(element => {
+		element.classList.remove('unmatched');
+		element.classList.remove('open');
+		element.classList.remove('disable');
+		element.classList.remove('match');
+	}); 
 }
 
-// console.log(deck.innerHTML);
+// Remove all class
+function removeAll() {
+	check.forEach(element => {
+		element.classList.add('unmatched');
+	}); 
+
+	state = false;
+	setTimeout(function() {
+		callback();
+		check = [];
+		state = true;
+	}, 1000);
+}
 
 
-	
-newtag.forEach((element, index) => {
+// Eventlistender when click on a li tag
+newtag.forEach((element, index, newtag) => {
 	element.addEventListener('click', () => {
-		if (check.length < 2) {
-			element.classList.add('open');
-			check.push(element);
-		} 
-		if (check.length == 2) {
-			move ++;
-			score.innerText = move;
+		if (state == false) return
+		else {
+			if (check.length < 2) {
+				if (newtag.indexOf(element) == k) return
+				element.classList.add('open');
+				check.push(element);
+				k = newtag.indexOf(element);
+			} 
 
-			if (check[0].type == check[1].type) {
-				for (let i = 0; i < 2; i ++) {
-					check[i].classList.remove('open');
-					check[i].classList.add('match');
-					check[i].classList.add('disable');
+			if (check.length == 2) {
+				move ++;
+				score.innerText = move;
+
+				if (check[0].type == check[1].type) {
+					check.forEach(element => {
+						element.classList.remove('unmatched');
+						element.classList.remove('open');
+						element.classList.add('match');
+						element.classList.add('disable');
+					});
+					same ++;
+					check = [];
+				
+				} else if (check[0].type != check[1].type) {
+					removeAll();
 				}
-			check = [];
-			} else if (check[0].type != check[1].type) {
-				console.log('Khong trung nhau');
-				for (let i = 0; i < 2; i ++) {
-					check[i].classList.add('unmatched');
-					setTimeout(function() {
-						check[i].classList.remove('unmatched');
-						check[i].classList.remove('disable');
-						check[i].classList.remove('open');
-						check[i].classList.remove('match');
-					}, 1000, check);
-					
-				}
-			setTimeout(function() {
-				check = [];
-			}, 1000);
-			
 			}
+		}
+		if (same == 8) {
+			clearInterval(interval);
+			popup1.style.visibility = 'visible';
+			popup1.style.opacity = 1;
+			finalMove.innerText = move;
+			time.innerText = `${min} phút ${sec} s`;
+
 		}
 	});
 });
+
+close.addEventListener('click', () => {
+	popup1.style.visibility = 'hidden';
+	popup1.style.opacity = 0;
+});
+
+replay.addEventListener('click', () => {
+	location.reload();
+});
+
+restart.addEventListener('click', () => {
+	location.reload();
+});
+
+
+
+
+
+
+
+
 
 
 
