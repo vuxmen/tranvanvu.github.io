@@ -70,21 +70,21 @@ setUp();
 
 drawItem();
 
-function slideGrid(row, key) {
+function slideRow(row, key) {
 	let newarr;
 	let arr = row.filter(val => val);
 	let missing = 4 - arr.length;
 	let zero = Array(missing).fill(0);
-	if (key == 'left' || key == 'down') {
+	if (key == 'left' || key == 'up') {
 		newarr = arr.concat(zero);
-	} else if (key == 'right' || key == 'up') {
+	} else if (key == 'right' || key == 'down') {
 		newarr = zero.concat(arr);
 	}
 	return newarr;
 }
 
-function combineGrid(row, key) {
-	if (key == 'left' || key == 'down') {
+function combineRow(row, key) {
+	if (key == 'left' || key == 'up') {
 		for (let i = 0; i < 3; i ++) {
 			if (row[i] == row[i + 1]) {
 				row[i] *= 2;
@@ -92,7 +92,7 @@ function combineGrid(row, key) {
 				row.push(0);
 			}	
 		}
-	} else if (key == 'right' || key == 'up') {
+	} else if (key == 'right' || key == 'down') {
 		for (let i = 3; i > -1; i --) {
 			if (row[i] == row[i-1]) {
 				row[i] *= 2;
@@ -105,11 +105,18 @@ function combineGrid(row, key) {
 }
 
 function rotateGrid() {
+	let newgrid = [];
+	for (let i = 0; i < 4; i ++) {
+		newgrid.push([]);
+	}
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
-			grid[i][j] = grid[j][i];
+			newgrid[j].push(grid[i][j]);
 		}
 	}
+	grid = newgrid;
+	return newgrid;
+	
 }
 
 function checkEmpty() {
@@ -124,9 +131,11 @@ function checkEmpty() {
 
 function checkEqual() {
 	equal = false;
+	let copygrid;
+	copygrid = rotateGrid();
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
-			if (grid[i][j] == grid[i][j+1]) {
+			if ((grid[i][j] == grid[i][j+1]) && (copygrid[i][j] == copygrid[i][j+1])) {
 				equal = true;
 				return
 			}
@@ -157,7 +166,7 @@ document.addEventListener('keydown', event => {
 		direction = 'down';
 		break
 	}
-	console.log(direction);
+
 	if (event.keyCode == 37 || event.keyCode == 39) {
 		if (empty == 16 && equal == false ) {
 			alert('Game Over');
@@ -165,25 +174,24 @@ document.addEventListener('keydown', event => {
 		}
 		
 		for (let i = 0; i < 4; i ++) {
-			grid[i] = slideGrid(grid[i], direction);
-			combineGrid(grid[i], direction);
+			grid[i] = slideRow(grid[i], direction);
+			combineRow(grid[i], direction);
 		}	
 
 		addItem();
 		drawItem();
 	}
 
-	if (event.keyCode == 38 || event.keyCode == 40) {
+	else if (event.keyCode == 38 || event.keyCode == 40) {
 		rotateGrid();
-		console.log(grid);
 		if (empty == 16 && equal == false ) {
 			alert('Game Over');
 			return
 		}
 		
 		for (let i = 0; i < 4; i ++) {
-			grid[i] = slideGrid(grid[i], direction);
-			combineGrid(grid[i], direction);
+			grid[i] = slideRow(grid[i], direction);
+			combineRow(grid[i], direction);
 		}	
 
 		rotateGrid();
@@ -195,43 +203,7 @@ document.addEventListener('keydown', event => {
 });
 
 
-// let arrayx = [
-// 	[1, 2, 4],
-// 	[4, 6, 7],
-// 	[9, 0, 3]
-// ];
 
-// console.log(arrayx[0]);
-
-// let run = (arr, index) => arr.map(x => x[index]);
-
-
-// console.log(run(arrayx, 1));
-
-function transposeArray(array, arrayLength){
-    var newArray = [];
-    for(var i = 0; i < array.length; i++){
-        newArray.push([]);
-        console.log(newArray);
-        
-    };
-
-    for(var i = 0; i < array.length; i++){
-        for(var j = 0; j < arrayLength; j++){
-            newArray[j].push(array[i][j]);
-        };
-    };
-
-    return newArray;
-}
-
-
-let array = [
-		[3, 5, 2, 1],
-		[0, 0, 1, 1],
-		[9, 8, 2, 2],
-		[0, 0, 2, 8]
-	];
 
 
 
