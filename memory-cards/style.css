@@ -224,3 +224,8 @@ body {
 #add-card {
 	margin-top: 1rem;
 }
+
+.inner-padding {
+	padding-left: 30px;
+	padding-right: 15px;
+}
