@@ -6,8 +6,7 @@ let quizContent = document.querySelector('.quiz-content');
 let quizQuestion = document.querySelector('.quiz-question');
 let quizAnswer = document.querySelector('.quiz-answer');
 let current = 0;
-let indexstore;
-let currentstore;
+let dataStore = [];
 
 let data = [
     {
@@ -75,31 +74,35 @@ function initialize() {
         </div>
         `
     );
-    let quizItem = document.querySelectorAll('.quiz-item');
-
     
+    let quizItem = document.querySelectorAll('.quiz-item');
 
     quizItem.forEach(
         (e, index) => {
+            // for (let i = 0; i < dataStore.length; i ++) {
+            //     if (dataStore[i].current == current && dataStore[i].index == index) {
+            //         e.checked = true;
+            //     }
+            // }
             e.addEventListener('click', () => {
                 let input = e.getElementsByTagName('input')[0];
                 input.checked = true;
-                indexstore = index;
+                dataStore.push({current: current, index: index});
+                console.log(dataStore);
                 next.classList.remove('disable');
             });
         }
     );
-
-    storeIndex();
+    
+    
     checkProgress();
     showSubmit();
 
-    currentstore = current;
+
 }
     
     next.addEventListener('click', () => {
         if (current >= data.length - 1) return
-        currentstore = current;
         current ++;
         reset();
         initialize();
@@ -107,26 +110,12 @@ function initialize() {
 
     pre.addEventListener('click', () => {
         if (current <= 0) return
-        currentstore = current;
         current --;
         reset();
         initialize();
     });
 
-    function storeIndex() {
-        let quizItem = document.querySelectorAll('.quiz-item');
-        quizItem.forEach(
-            (e, index) => {
-                let input = e.getElementsByTagName('input')[0];
-                if (current == currentstore && index == indexstore) {
-                    input.checked = true;
-                } else {
-                    input.checked = false;
-                }
-               
-            }
-        );
-    }
+   
 
     function checkProgress() {
         if (current == data.length - 1) {
