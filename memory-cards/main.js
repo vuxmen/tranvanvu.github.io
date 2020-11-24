@@ -14,6 +14,7 @@ let back = document.querySelector('.inner-card-back');
 let showanswer = false;
 let current = 0;
 let card;
+
 let cardData = [
 	{
 		question: 'How different DOMstring vs String ?',
