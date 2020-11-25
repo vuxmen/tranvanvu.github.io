@@ -4,6 +4,9 @@ let finish = document.querySelector('.finish-btn');
 let quickProgress = document.querySelector('.quiz-progress-bar');
 let quizContent = document.querySelector('.quiz-content');
 let quizQuestion = document.querySelector('.quiz-question');
+let quizResult = document.querySelector('.quiz-results');
+let quizScore = document.querySelector('.quiz-results-score');
+let backbtn = document.querySelector('.back-btn');
 let quizAnswer;
 let quizItem;
 let input;
@@ -40,7 +43,8 @@ let data = [
             'script',
             'scripting',
             'js',
-            'Javascript'
+            'Javascript',
+            'another answer'
         ],
         trueAnswer: '<script>'
     },
@@ -49,8 +53,7 @@ let data = [
         answer: [
             'The head section',
             'The body section',
-            'Both body and head',
-            'None of these'
+            'Both body and head'
         ],
         trueAnswer: 'The body section'
     }
@@ -95,23 +98,41 @@ function initialize() {
     input = document.getElementsByTagName('input');
 
     storeData();
+    checktoggle();
     checkProgress();
     showSubmit();
+    enableSubmit();
+    console.log(dataStore);
+    console.log(current);
 
 }
 
-    [...input].forEach(
-        (e, index) => e.addEventListener('click', () => {
-            e.checked = true;
-            dataStore.forEach(item => {
-              if (item.current == current) {
-                item.index = index;
-              }
-            });
-            next.classList.remove('disable');
-            console.log(dataStore);
-        })
-    );
+    function checktoggle() {
+      [...input].forEach((item, i) => {
+        if (item.checked == true) {
+          next.classList.remove('disable');
+          return
+        }
+      });
+
+    }
+
+    function toggle(event) {
+      if (!event.target.matches('input')) return
+      event.stopPropagation();
+      event.target.checked = true;
+      dataStore.forEach(item => {
+          if (item.current == current) {
+            item.index = [...input].indexOf(event.target);
+          }
+      });
+          next.classList.remove('disable');
+          console.log(dataStore);
+          console.log(current);
+          enableSubmit();
+    }
+
+    quizContent.addEventListener('click', toggle);
 
     next.addEventListener('click', () => {
         if (current >= data.length - 1) return
@@ -119,8 +140,6 @@ function initialize() {
         storeData();
         reset();
         initialize();
-        console.log(current);
-        console.log(dataStore);
     });
 
     pre.addEventListener('click', () => {
@@ -129,17 +148,38 @@ function initialize() {
         storeData();
         reset();
         initialize();
-        console.log(current);
-        console.log(dataStore);
+    });
+
+    finish.addEventListener('click', () => {
+      let score = 0;
+      dataStore.forEach((item, i) => {
+        if (data[i].answer[item.index] == data[i].trueAnswer) {
+          score++;
+        }
+      });
+
+      quizResult.style.display = 'block';
+      quizScore.innerText = `SCORE: ${score} / ${dataStore.length}`;
+    });
+
+    backbtn.addEventListener('click', () => {
+      location.reload();
     });
 
     function storeData() {
-      dataStore.forEach((item, index) => {
+      console.log(dataStore);
+      console.log(current);
+      dataStore.forEach(item => {
         if (item.current == current) {
-          for (let i = 0; i < input.length; i ++) {
-            if (input[i].checked == true) {
-              item.index = i;
+          if (item.index != null) {
+            for (let i = 0; i < input.length; i ++) {
+              if (i == item.index) {
+                  input[i].checked = true;
+              } else {
+                  input[i].checked = false;
+              }
             }
+
           }
         }
       });
@@ -159,4 +199,16 @@ function initialize() {
         } else {
             finish.style.display = 'none';
         }
+    }
+
+    function enableSubmit() {
+      let count = 0;
+      dataStore.forEach((item, i) => {
+        if (item.index != null) {
+          count ++;
+        }
+      });
+      if (count == 3) {
+        finish.classList.remove('disable');
+      }
     }
