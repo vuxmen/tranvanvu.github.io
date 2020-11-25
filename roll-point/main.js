@@ -43,7 +43,14 @@ btn_roll.addEventListener('click', function() {
 		alert('Nhập mức điểm trước khi chơi');
 		return
 	}
-	if (Number(player1_score.innerText) >= maxPoint || Number(player2_score.innerText) >= maxPoint) return
+	if (Number(player1_score.innerText) >= maxPoint) {
+		alert('Player 1 win the Game!');
+		return
+	}
+	if (Number(player2_score.innerText) >= maxPoint) {
+		alert('Player 2 win the Game!');
+		return
+	}
 	img1.style.display = 'block';
 	img2.style.display = 'block';
 	let m = Math.floor(Math.random() * diceCase.length);
@@ -88,14 +95,3 @@ btn_hold.addEventListener('click', function() {
 		player2_currentScore.innerText = '0';
 	}
 });
-
-
-
-
-
-
-
-
-
-
-	
