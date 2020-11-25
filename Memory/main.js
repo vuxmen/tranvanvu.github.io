@@ -2,8 +2,8 @@ let tag = document.getElementsByTagName('li');
 let deck = document.querySelector('.deck');
 let score = document.querySelector('.moves')
 let popup1 = document.querySelector('.overlay');
-let final = document.querySelector('.finalMove');
-let time = document.querySelector('.content-2');
+let final = document.querySelector('#finalMove');
+let time = document.querySelector('#totalTime');
 let timer = document.querySelector('.timer');
 let close = document.querySelector('.close');
 let replay = document.getElementById('play-again');
@@ -23,7 +23,7 @@ let min = 0;
 	element.classList.remove('disable');
 	element.classList.remove('match');
 	element.classList.remove('unmatched');
-}); 
+});
 
 // Random index and return new arr
 function randomIndex(arr) {
@@ -33,7 +33,7 @@ function randomIndex(arr) {
 }
 newtag = randomIndex([...tag]);
 
-//Remove old child and append new child to deck 
+//Remove old child and append new child to deck
 deck.innerHTML = '';
 newtag.forEach(element => {
 	deck.appendChild(element);
@@ -50,7 +50,7 @@ let interval = setInterval(function() {
 			min = 0;
 		}
 	}
-	timer.innerText = `${min} phút ${sec} s`;
+	timer.innerText = `${min} mins ${sec} sec`;
 }, 1000);
 
 
@@ -63,14 +63,14 @@ function callback() {
 		element.classList.remove('open');
 		element.classList.remove('disable');
 		element.classList.remove('match');
-	}); 
+	});
 }
 
 // Remove all class
 function removeAll() {
 	check.forEach(element => {
 		element.classList.add('unmatched');
-	}); 
+	});
 
 	state = false;
 	setTimeout(function() {
@@ -91,7 +91,7 @@ newtag.forEach((element, index, newtag) => {
 				element.classList.add('open');
 				check.push(element);
 				k = newtag.indexOf(element);
-			} 
+			}
 
 			if (check.length == 2) {
 				move ++;
@@ -106,7 +106,7 @@ newtag.forEach((element, index, newtag) => {
 					});
 					same ++;
 					check = [];
-				
+
 				} else if (check[0].type != check[1].type) {
 					removeAll();
 				}
@@ -117,7 +117,7 @@ newtag.forEach((element, index, newtag) => {
 			popup1.style.visibility = 'visible';
 			popup1.style.opacity = 1;
 			finalMove.innerText = move;
-			time.innerText = `${min} phút ${sec} s`;
+			time.innerText = `${min} mins ${sec} sec`;
 
 		}
 	});
@@ -135,15 +135,3 @@ replay.addEventListener('click', () => {
 restart.addEventListener('click', () => {
 	location.reload();
 });
-
-
-
-
-
-
-
-
-
-
-
-
