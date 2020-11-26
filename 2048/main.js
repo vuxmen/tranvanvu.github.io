@@ -19,18 +19,15 @@ let grid = [
 	];
 
 function setUp() {
-	addItem();
-	addItem();
+	addNumber();
+	addNumber();
 }
 
-let empty;
-let equal;
-
-function randomItem(arr) {
+function randomNumber(arr) {
  	return arr[Math.floor(Math.random() * arr.length)];
-} 
+}
 
-function addItem() {
+function addNumber() {
 	let options = [];
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
@@ -40,12 +37,12 @@ function addItem() {
 		}
 	}
 	if (options.length > 0);
-	let element = randomItem(options);
+	let element = randomNumber(options);
 	let r = Math.random() * 1;
 	grid[element.x][element.y] = r > 0.5 ? 2 : 4;
 }
 
-function drawItem() {
+function drawNumber() {
 	pen.font = '60px Roboto';
 	pen.fillStyle = 'red';
 	pen.lineWidth = 2;
@@ -68,7 +65,7 @@ function drawItem() {
 
 setUp();
 
-drawItem();
+drawNumber();
 
 function slideRow(row, key) {
 	let newarr;
@@ -90,7 +87,7 @@ function combineRow(row, key) {
 				row[i] *= 2;
 				row.splice(i + 1, 1);
 				row.push(0);
-			}	
+			}
 		}
 	} else if (key == 'right' || key == 'down') {
 		for (let i = 3; i > -1; i --) {
@@ -104,7 +101,7 @@ function combineRow(row, key) {
 	return row
 }
 
-function rotateGrid() {
+function rotateGrid(grid) {
 	let newgrid = [];
 	for (let i = 0; i < 4; i ++) {
 		newgrid.push([]);
@@ -114,104 +111,112 @@ function rotateGrid() {
 			newgrid[j].push(grid[i][j]);
 		}
 	}
-	grid = newgrid;
 	return newgrid;
-	
+
 }
 
-function checkEmpty() {
+function checkEmptyRow() {
+	let empty = 0;
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
-			if (grid[i][j] != 0) {
+			if (grid[i][j] == 0) {
 				empty ++;
 			}
 		}
 	}
+	if (empty > 0) return true
+	if (empty == 0) return false
 }
 
-function checkEqual() {
-	equal = false;
-	let copygrid;
-	copygrid = rotateGrid();
+function checkEmptyColumn() {
+	let empty = 0;
+	let gridRotate = rotateGrid(grid);
 	for (let i = 0; i < 4; i ++) {
 		for (let j = 0; j < 4; j ++) {
-			if ((grid[i][j] == grid[i][j+1]) && (copygrid[i][j] == copygrid[i][j+1])) {
-				equal = true;
-				return
+			if (gridRotate[i][j] == 0) {
+				empty ++;
 			}
 		}
 	}
+	if (empty > 0) return true
+	if (empty == 0) return false
+}
+
+function checkValueRow() {
+	let count = 0;
+	for (let i = 0; i < 4; i ++) {
+		for (let j = 0; j < 3; j ++) {
+			if ((grid[i][j] == grid[i][j+1])) {
+				count ++;
+			}
+		}
+	}
+	if (count > 0) return true
+	if (count == 0) return false
+}
+
+function checkValueColumn() {
+	let count = 0;
+	let gridRotate = rotateGrid(grid);
+	for (let i = 0; i < 4; i ++) {
+		for (let j = 0; j < 3; j ++) {
+			if ((gridRotate[i][j] == gridRotate[i][j+1])) {
+				count ++;
+			}
+		}
+	}
+	if (count > 0) return true
+	if (count == 0) return false
 }
 
 //addEventlistener
 
 document.addEventListener('keydown', event => {
 	let direction;
-	empty = 0
-	equal = false;
-	checkEmpty();
-	checkEqual();
-
 	switch(event.keyCode) {
 		case 37:
 		direction = 'left';
 		break
-		case 39: 
+		case 39:
 		direction = 'right';
 		break
-		case 38: 
+		case 38:
 		direction = 'up';
 		break
-		case 40: 
+		case 40:
 		direction = 'down';
 		break
 	}
 
 	if (event.keyCode == 37 || event.keyCode == 39) {
-		if (empty == 16 && equal == false ) {
-			alert('Game Over');
-			return
-		}
-		
-		for (let i = 0; i < 4; i ++) {
-			grid[i] = slideRow(grid[i], direction);
-			combineRow(grid[i], direction);
-		}	
+		let checkvalue = checkValueRow();
+		let checkempty = checkEmptyRow();
 
-		addItem();
-		drawItem();
+		if (checkvalue == true || checkempty == true) {
+			for (let i = 0; i < 4; i ++) {
+				grid[i] = slideRow(grid[i], direction);
+				combineRow(grid[i], direction);
+			}
+			addNumber();
+			drawNumber();
+		} else return
 	}
 
 	else if (event.keyCode == 38 || event.keyCode == 40) {
-		rotateGrid();
-		if (empty == 16 && equal == false ) {
-			alert('Game Over');
-			return
-		}
-		
-		for (let i = 0; i < 4; i ++) {
-			grid[i] = slideRow(grid[i], direction);
-			combineRow(grid[i], direction);
-		}	
+		let checkvalue = checkValueColumn();
+		let checkempty = checkEmptyColumn();
 
-		rotateGrid();
-		addItem();
-		drawItem();
+		if (checkvalue == true || checkempty == true) {
+			let newGrid = rotateGrid(grid);
+			for (let i = 0; i < 4; i ++) {
+				newGrid[i] = slideRow(newGrid[i], direction);
+				combineRow(newGrid[i], direction);
+			}
+			grid = rotateGrid(newGrid);
+			addNumber();
+			drawNumber();
+		} else return
 
 	}
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
