@@ -1,11 +1,11 @@
 
-
 let canvas = document.querySelector('#canvas');
 let pen = canvas.getContext('2d');
 let w;
 
 canvas.width = 600;
 canvas.height = 600;
+canvas.style.backgroundColor = 'rgba(238, 228, 218, 0.35)';
 canvas.style.border = '2px solid black';
 canvas.style.display = 'block';
 canvas.style.margin = 'auto';
@@ -18,7 +18,7 @@ let grid = [
 		[0, 0, 0, 0]
 	];
 
-function setUp() {
+function randomTwoNumber() {
 	addNumber();
 	addNumber();
 }
@@ -42,7 +42,7 @@ function addNumber() {
 	grid[element.x][element.y] = r > 0.5 ? 2 : 4;
 }
 
-function drawNumber() {
+function drawCanvas() {
 	pen.font = '60px Roboto';
 	pen.fillStyle = 'red';
 	pen.lineWidth = 2;
@@ -63,9 +63,9 @@ function drawNumber() {
 	}
 }
 
-setUp();
+randomTwoNumber();
 
-drawNumber();
+drawCanvas();
 
 function slideRow(row, key) {
 	let newarr;
@@ -189,24 +189,24 @@ document.addEventListener('keydown', event => {
 	}
 
 	if (event.keyCode == 37 || event.keyCode == 39) {
-		let checkvalue = checkValueRow();
-		let checkempty = checkEmptyRow();
-
-		if (checkvalue == true || checkempty == true) {
+		let valueRow = checkValueRow();
+		let emptyRow = checkEmptyRow();
+		console.log(valueRow, emptyRow);
+		if (valueRow == true || emptyRow == true) {
 			for (let i = 0; i < 4; i ++) {
 				grid[i] = slideRow(grid[i], direction);
 				combineRow(grid[i], direction);
 			}
 			addNumber();
-			drawNumber();
+			drawCanvas();
 		} else return
 	}
 
 	else if (event.keyCode == 38 || event.keyCode == 40) {
-		let checkvalue = checkValueColumn();
-		let checkempty = checkEmptyColumn();
+		let valueColumn = checkValueColumn();
+		let emptyColumn = checkEmptyColumn();
 
-		if (checkvalue == true || checkempty == true) {
+		if (valueColumn == true || emptyColumn == true) {
 			let newGrid = rotateGrid(grid);
 			for (let i = 0; i < 4; i ++) {
 				newGrid[i] = slideRow(newGrid[i], direction);
@@ -214,7 +214,7 @@ document.addEventListener('keydown', event => {
 			}
 			grid = rotateGrid(newGrid);
 			addNumber();
-			drawNumber();
+			drawCanvas();
 		} else return
 
 	}
