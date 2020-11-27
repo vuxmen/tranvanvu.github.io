@@ -1,16 +1,16 @@
-
+// Canvas initial
 let canvas = document.querySelector('#canvas');
 let pen = canvas.getContext('2d');
 let w;
-
 canvas.width = 600;
 canvas.height = 600;
 canvas.style.backgroundColor = 'rgba(238, 228, 218, 0.35)';
-canvas.style.border = '2px solid black';
+canvas.style.border = '1px solid black';
 canvas.style.display = 'block';
 canvas.style.margin = 'auto';
 w = canvas.width / 4;
 
+//Grid and state at beginning
 let grid = [
 		[0, 0, 0, 0],
 		[0, 0, 0, 0],
@@ -18,9 +18,21 @@ let grid = [
 		[0, 0, 0, 0]
 	];
 
+let begin = true;
+let direction;
+let rdx;
+let rdy;
+let value;
+let turn = 0;
+
+//Random 2 numbers at begining
+randomTwoNumber();
+drawCanvas();
+
 function randomTwoNumber() {
 	addNumber();
 	addNumber();
+	begin = false;
 }
 
 function randomNumber(arr) {
@@ -36,10 +48,18 @@ function addNumber() {
 			}
 		}
 	}
-	if (options.length > 0);
-	let element = randomNumber(options);
-	let r = Math.random() * 1;
-	grid[element.x][element.y] = r > 0.5 ? 2 : 4;
+	if (options.length > 0) {
+		let check = checkRandom();
+		if (check == true) {
+			let r = Math.random() * 1;
+			let element = randomNumber(options);
+			rdx = element.x;
+			rdy = element.y;
+			grid[element.x][element.y] = r > 0.5 ? 2 : 4;
+			value = grid[element.x][element.y];
+			console.log(rdx, rdy);
+		}
+	}
 }
 
 function drawCanvas() {
@@ -61,12 +81,19 @@ function drawCanvas() {
 			}
 		}
 	}
+	if (turn > 0) {
+		pen.beginPath();
+		pen.clearRect(rdy * w, rdx * w, w, w);
+		pen.fillStyle = '#ff6f61';
+		pen.fillRect(rdy * w, rdx * w, w, w);
+		pen.beginPath();
+		pen.fillStyle = 'white';
+		pen.fillText(value, rdy * w + w/2, rdx * w + w/2);
+	}
+
 }
 
-randomTwoNumber();
-
-drawCanvas();
-
+//Slide and Combine the same value
 function slideRow(row, key) {
 	let newarr;
 	let arr = row.filter(val => val);
@@ -101,6 +128,7 @@ function combineRow(row, key) {
 	return row
 }
 
+// Rotate Grid when press UP or DOWN button
 function rotateGrid(grid) {
 	let newgrid = [];
 	for (let i = 0; i < 4; i ++) {
@@ -115,6 +143,7 @@ function rotateGrid(grid) {
 
 }
 
+//Check row or column is filled or empty
 function checkEmptyRow() {
 	let empty = 0;
 	for (let i = 0; i < 4; i ++) {
@@ -142,6 +171,7 @@ function checkEmptyColumn() {
 	if (empty == 0) return false
 }
 
+//Check 2 values equal beside eachother
 function checkValueRow() {
 	let count = 0;
 	for (let i = 0; i < 4; i ++) {
@@ -169,29 +199,73 @@ function checkValueColumn() {
 	if (count == 0) return false
 }
 
-//addEventlistener
+//Check condition when the function randomNumber is called
+function checkRandom() {
+	let count = 0;
+	if (begin == true) return true
+	if (begin == false) {
+		if (direction == 'left') {
+			for (let i = 0; i < 4; i ++) {
+				if (grid[i][0] != 0) {
+					count ++;
+				}
+			}
+		}
+		if (direction == 'right') {
+			for (let i = 0; i < 4; i ++) {
+				if (grid[i][3] != 0) {
+					count ++;
+				}
+			}
+		}
+		if (direction == 'up') {
+			grid = rotateGrid(grid);
+			for (let i = 0; i < 4; i ++) {
+				if (grid[i][0] != 0) {
+					count ++;
+				}
+			}
+			grid = rotateGrid(grid);
+		}
+		if (direction == 'down') {
+				grid = rotateGrid(grid);
+			for (let i = 0; i < 4; i ++) {
+				if (grid[i][3] != 0) {
+					count ++;
+				}
+			}
+			grid = rotateGrid(grid);
+		}
 
+		if (count == 4) return false
+		else return true
+	}
+}
+
+//addEventlistener for Press keyboard
 document.addEventListener('keydown', event => {
-	let direction;
 	switch(event.keyCode) {
 		case 37:
 		direction = 'left';
+		turn ++;
 		break
 		case 39:
 		direction = 'right';
+		turn ++;
 		break
 		case 38:
 		direction = 'up';
+		turn ++;
 		break
 		case 40:
 		direction = 'down';
+		turn ++;
 		break
 	}
 
 	if (event.keyCode == 37 || event.keyCode == 39) {
 		let valueRow = checkValueRow();
 		let emptyRow = checkEmptyRow();
-		console.log(valueRow, emptyRow);
 		if (valueRow == true || emptyRow == true) {
 			for (let i = 0; i < 4; i ++) {
 				grid[i] = slideRow(grid[i], direction);
@@ -199,6 +273,7 @@ document.addEventListener('keydown', event => {
 			}
 			addNumber();
 			drawCanvas();
+			console.log(grid);
 		} else return
 	}
 
@@ -215,8 +290,7 @@ document.addEventListener('keydown', event => {
 			grid = rotateGrid(newGrid);
 			addNumber();
 			drawCanvas();
+			console.log(grid);
 		} else return
-
 	}
-
 });
