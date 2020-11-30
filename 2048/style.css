@@ -8,34 +8,168 @@ body {
 	font-size: 1rem;
 	text-align: center;
 	color: white;
+	height: 100vh;
+	margin: 0;
+
 }
 
 .container {
 	width: 100%;
-	padding-left: 15px;
-	padding-right: 15px;
 	position: relative;
+	height: 100vh;
 }
 
 .start-game {
 	background-color: #ff6f61;
+	height: 100vh;
+	margin: 0;
+	padding: 0
 }
 
 .start-game h1 {
+	font-size: 50px;
+	padding-top: 10vw;
+	margin: 0;
+	margin-bottom: 0.5vw;
+}
+
+.small {
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 0.5vw;
+}
+
+label {
 	font-size: 30px;
 }
 
-@media screen and (max-width: 575px) {
+select {
+	font-size: 20px;
+}
+
+.para {
+	font-size: 20px;
+	width: 40%;
+	margin: auto;
+	padding-top: 2vw;
+}
+
+#playGame, #restartGame {
+	background-color: #9c9ec9;
+	font-size: 18px;
+	display: block;
+	margin-top: 2vw;
+	margin-left: 45%;
+	height: 40px;
+	color: white;
+	border: 1px solid white;
+	border-radius: 4px;
+	box-shadow: 2px 2px #9c9ec9;
+	cursor: pointer;
+}
+
+.user {
+	padding-top: 2vw;
+	width: 30%;
+	margin: auto;
+	height: 5vw;
+	display: flex;
+	justify-content: space-around;
 
 }
 
-@media screen and (min-width: 576px) and (max-width: 767px){
+.user input {
+	display: inline-block;
+	flex: 0 0 60%;
+	height: 100%5
+	border: 1px solid white;
+	border-radius: 4px;
+	box-shadow: 2px 2px 5px 5px rgba(192,192,192,0.3);
+}
+
+#confirm {
+	display: inline-block;
+	flex: 0 0 25%;
+	height: 100%;
+	background-color: #c3447a;
+	color: white;
+	border: 1px solid white;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-
+.note, .inform {
+	width: 50%;
+	padding-top: 2vw;
+	margin: auto;
 }
-@media screen and (min-width: 992px) and (max-width: 1199px) {
 
+.game-on {
+	background-color: #f7cac9;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: none;
+}
+
+.timer {
+	color: #d2386c;
+	position: absolute;
+	left: 4vw;
+	font-size: 25px;
+}
+
+.viewscore {
+	position: absolute;
+	top: 6vw;
+	left: 4vw;
+	font-size: 40px;
+	color:#bc243c;
+}
+
+.align {
+	display: flex;
+	justify-content: space-between;
+}
+
+#finish, #restart {
+	border: 1px solid white;
+	height: 60px;
+	width: 100px;
+	font-size: 20px;
+	border-radius: 5px;
+	background-color: #45b8ac;
+	color: white;
+	position: absolute;
+	right: 8vw;
+	top: 2vw;
+	box-shadow: 2px 2px grey;
+	cursor: pointer;
+}
+
+#restart {
+	top: 8vw;
+	background-color: #98b4d4;
+	font-size: 18px;
+}
+
+#scoreTable {
+	font-family: 'Alegreya', serif;
+	font-size: 20px;
+	position: absolute;
+	background-color: white;
+	padding: 0 6px 0 6px;
+	width: 20%;
+	height: 25vw;
+	overflow: scroll;
+	top: 18vw;
+	right: 3vw;
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 2px 4px 4px rgba(192,192,192,0.3);
+	color: grey;
 }
