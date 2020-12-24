@@ -1,0 +1,23 @@
+
+.container {
+  padding: 0 8px 0 8px;
+}
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5px 0 5px 0;
+}
+
+.col-3 {
+  flex: 0 0 32%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+img {
+  max-width: 100%;
+}
